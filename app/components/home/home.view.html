@@ -1,0 +1,29 @@
+<div class="col-md-8">
+  <div class="form-group">
+    <label for="length">Length of coverage area in feet</label>
+    <input id="length" class="form-control" type="number" ng-model="length" placeholder="Length in feet">
+  </div>
+  <div class="form-group">
+    <label for="width">Width of coverage area in feet</label>
+    <input id="width" class="form-control" type="number" ng-model="width" placeholder="Width in feet">
+  </div>
+  <div class="form-group">
+    <label for="depth">Product depth in inches <small>(we recommend 3")</small></label>
+    <input id="depth" class="form-control" type="number" ng-model="depth" placeholder="Depth in inches">
+  </div>
+  <div class="form-group">
+    <label for="depth">Product</label>
+    <select class="form-control" ng-model="selectedProduct" ng-options="product.name + ' / &dollar;' + product.price for product in products"></select>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="delivered"> I'd like this delivered for an additional &dollar;{{ deliveryFee }}
+    </label>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <h2 class="text-center">You need <strong>{{ yards = CubicYardAmount(length, width, depth) }}</strong> cubic yard{{ yards == 1 ? "" : "s" }} of {{ selectedProduct.name }} or <strong>{{ buckets = BucketAmount(yards) }}</strong> bucket{{ buckets == 1 ? "" : "s"}}.</h2>
+  <h1 class="text-center">Your total cost {{delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ BucketAmount(yards) * selectedProduct.price + (delivered && buckets > 0 ? deliveryFee : 0)}}</strong></h1>
+  <p class="bg-info text-center" ng-if="buckets > selectedProduct.deliveryLimit && delivered"><i class="fa fa-info-circle"></i> {{ selectedProduct.deliveryLimit }} buckets is our maximum delivery amount for {{ selectedProduct.name }}. Your order would have to be split into {{ deliveries = Math.ceil(buckets / selectedProduct.deliveryLimit) }} deliver{{ deliveries == 1 ? "y" : "ies"}} for an additional &dollar;{{ deliveries * 25 }} fee.</p>
+</div>
