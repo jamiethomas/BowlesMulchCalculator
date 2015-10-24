@@ -1,41 +1,24 @@
 // Tests using IIFE Syntax
 (function () {
 
-  describe("Product Service Tests", function() {
-    var mockedFactory, $rootScope, $controller;
+  // http://www.scriptscoop.net/t/41ba8825d12a/jasmine-trying-to-test-an-angularjs-service-function.html
 
-    beforeEach(module('app', function($provide) {
-      mockedFactory = {
-        GetProducts: jasmine.createSpy()
-      };
+  describe("ProductService Tests", function() {
+    var testService = null;
 
-      $provide.value('ProductService', mockedFactory);
+    beforeEach(angular.mock.module('app'));
+
+    beforeEach(inject(function(ProductService) {
+      testService = ProductService;
     }));
 
-    beforeEach(inject(function(_$rootScope_, _$controller_) {
-      $rootScope = _$rootScope_;
-      $controller = _$controller_;
-    }));
+    it('There should be 6 products', function(){ //parameter name = service name
+      expect( testService.getProducts().length ).toEqual(6);
+     });
 
-    scope = $rootScope.$new();
-
-    it('Should call the GetProducts function', function() {
-      scope.GetProducts();
-      expect(mockedFactory.GetProducts).toHaveBeenCalled();
+    it("getDefaultProduct() should equal the first product in the list", function() {
+      expect(testService.getProducts()[0]).toEqual(testService.getDefaultProduct());
     });
-
-    //beforeEach(function() {
-    //person = new Person("John", "Doe")
-    //});
-
-    it("getProducts should have data", function() {
-      // TODO
-    });
-
-    it("getDefaultProduct should equal the first product in the list", function() {
-      // TODO
-    });
-
 
   });
 
