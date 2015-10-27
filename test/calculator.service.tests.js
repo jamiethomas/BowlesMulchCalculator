@@ -41,11 +41,20 @@
         expect(testService.CubicYardAmount(-3, -9, -12)).toBe(0);
       });
 
-      it("CubicYardAmount should return a minimum of 1", function() {
+      it("CubicYardAmount should do the math correctly", function() {
         expect(testService.CubicYardAmount(3, 9, 12)).toBe(1);
       });
 
-      it("CubicYardAmount should should round up", function() {});
+      it("CubicYardAmount should should round up", function() {
+
+        var length = 2;
+        var width = 2;
+        var depth = 3;
+        var yards = ((length * width * (depth / 12) ) / 27 );
+
+        //expect(testService.CubicYardAmount(length, width, depth)).toBe(0);
+
+      });
 
     });
 
