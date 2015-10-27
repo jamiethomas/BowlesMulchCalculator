@@ -8,7 +8,7 @@
 
     beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function(ProductService) {
+    beforeEach(angular.mock.inject(function(ProductService) {
       testService = ProductService;
     }));
 

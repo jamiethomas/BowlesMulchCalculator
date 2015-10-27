@@ -25,7 +25,11 @@
     }
 
     function BucketAmount(yards) {
-      return yards * 2
+      var buckets = 0;
+      if (yards > 0) {
+        buckets = yards * 2
+      }
+      return buckets;
     }
   }
 })();

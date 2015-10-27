@@ -25,6 +25,14 @@
         }
       });
 
+      it('Buckets should handle zero', function() {
+        expect($scope.BucketAmount(0)).toBe(0);
+      });
+
+      it('Buckets should return zero for negative numbers', function() {
+        expect($scope.BucketAmount(-1)).toBe(0);
+      });
+
     });
 
   });
