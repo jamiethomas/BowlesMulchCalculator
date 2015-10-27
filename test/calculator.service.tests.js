@@ -14,19 +14,38 @@
 
     describe("BucketAmount Tests", function() {
 
-      it('Buckets should equal double the yard amount', function () {
+      it('BucketAmount should equal double the yard amount', function () {
         for (i = 0; i <= 100; i++) {
           expect(testService.BucketAmount(i)).toBe(i * 2);
         }
       });
 
-      it('Buckets should handle zero', function() {
+      it('BucketAmount should handle zero', function() {
         expect(testService.BucketAmount(0)).toBe(0);
       });
 
-      it('Buckets should return zero for negative numbers', function() {
+      it('BucketAmount should return zero for negative numbers', function() {
         expect(testService.BucketAmount(-1)).toBe(0);
       });
+
+    });
+
+    describe("CubicYardAmount Tests", function() {
+
+      it("CubicYardAmount should handle zero", function() {
+        expect(testService.CubicYardAmount(0, 0, 0)).toBe(0);
+      });
+
+      it("CubicYardAmount should handle negative numbers", function() {
+        expect(testService.CubicYardAmount(-1, -1, -1)).toBe(0);
+        expect(testService.CubicYardAmount(-3, -9, -12)).toBe(0);
+      });
+
+      it("CubicYardAmount should return a minimum of 1", function() {
+        expect(testService.CubicYardAmount(3, 9, 12)).toBe(1);
+      });
+
+      it("CubicYardAmount should should round up", function() {});
 
     });
 

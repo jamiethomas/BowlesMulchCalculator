@@ -13,14 +13,24 @@
       };
 
       function CubicYardAmount(length, width, depth) {
-        return Math.round(length * width * (depth / 12) / 27);
+
+        var yards = 0;
+
+        if (length > 0 && width > 0 && depth > 0) {
+          yards = Math.round(length * width * (depth / 12) / 27);
+        }
+
+        return yards;
       }
 
       function BucketAmount(yards) {
+
         var buckets = 0;
+
         if (yards > 0) {
           buckets = yards * 2
         }
+
         return buckets;
       }
 
