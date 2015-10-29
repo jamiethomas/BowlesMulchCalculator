@@ -60,8 +60,49 @@
 
       });
 
+      // Check Function for CubicYardAmount
+
       function yardsCheck(length, width, depth) {
         return ((length * width * (depth / 12) ) / 27 );
+      }
+
+    });
+
+    describe("BagsToYards Tests", function() {
+
+      it("BagsToYards should be defined", function () {
+        expect(testService.BagsToYards).toBeDefined();
+      });
+
+      it("BagsToYards should handle zero", function () {
+        expect(testService.BagsToYards(0, 0)).toBe(0);
+      });
+
+      it("BagsToYards should handle negative numbers", function () {
+        expect(testService.BagsToYards(-1, -1)).toBe(0);
+      });
+
+      it("18 1.5 Cubic Yard Bags should equal 1 yard", function() {
+        expect(testService.BagsToYards(1.5, 18)).toBe(1);
+      });
+
+      it("13.5 2 Cubic Yard Bags should equal 1 yard", function() {
+        expect(testService.BagsToYards(2, 13.5)).toBe(1);
+      });
+
+      it("9 3 Cubic Yard Bags should equal 1 yard", function() {
+        expect(testService.BagsToYards(3, 9)).toBe(1);
+      });
+
+      it("BagsToYards should round up", function() {
+        expect(testService.BagsToYards(3, 14)).toBe(2);
+        expect(bagCheck(3, 14)).toBeGreaterThan(1.5);
+      });
+
+      // Check Function for BagsToYards
+
+      function bagCheck(size, count) {
+        return (size * count) / 27
       }
 
     });

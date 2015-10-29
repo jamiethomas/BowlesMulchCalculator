@@ -9,7 +9,8 @@
 
       var factory = {
         CubicYardAmount : CubicYardAmount,
-        BucketAmount : BucketAmount
+        BucketAmount : BucketAmount,
+        BagsToYards : BagsToYards
       };
 
       function CubicYardAmount(length, width, depth) {
@@ -36,4 +37,16 @@
 
      return factory;
    }
+
+   function BagsToYards(size, count) {
+     var yards = 0;
+
+     if (size > 0 && count > 0) {
+       yards = Math.round(((size * count) / 27));
+     }
+
+     return yards;
+
+   }
+
 })();
