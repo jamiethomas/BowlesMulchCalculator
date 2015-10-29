@@ -46,15 +46,23 @@
       });
 
       it("CubicYardAmount should should round up", function() {
+        expect(testService.CubicYardAmount(2, 2, 3)).toBe(0);
+        expect(yardsCheck(2, 2, 3)).toBeLessThan(0.5);
 
-        var length = 2;
-        var width = 2;
-        var depth = 3;
-        var yards = ((length * width * (depth / 12) ) / 27 );
+        expect(testService.CubicYardAmount(3, 3, 12)).toBe(0);
+        expect(yardsCheck(3, 3, 12)).toBeLessThan(0.5);
 
-        //expect(testService.CubicYardAmount(length, width, depth)).toBe(0);
+        expect(testService.CubicYardAmount(3, 5, 12)).toBe(1);
+        expect(yardsCheck(3, 5, 12)).toBeGreaterThan(0.5);
+
+        expect(testService.CubicYardAmount(6, 7, 12)).toBe(2);
+        expect(yardsCheck(6, 7, 12)).toBeGreaterThan(1.5);
 
       });
+
+      function yardsCheck(length, width, depth) {
+        return ((length * width * (depth / 12) ) / 27 );
+      }
 
     });
 
