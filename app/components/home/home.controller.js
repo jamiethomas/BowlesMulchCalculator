@@ -18,5 +18,7 @@
     $scope.CubicYardAmount = CalculatorService.CubicYardAmount;
     $scope.BucketAmount = CalculatorService.BucketAmount;
 
+    $scope.Math = Math;
+
   }
 })();
