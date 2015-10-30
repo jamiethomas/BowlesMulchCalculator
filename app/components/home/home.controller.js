@@ -14,17 +14,16 @@
 
     $scope.selectedProduct = $scope.products[0];
 
-    $scope.CubicYardAmount = CalculatorService.CubicYardAmount;
-    $scope.BucketAmount = CalculatorService.BucketAmount;
     $scope.valueChanged = valueChanged;
 
     valueChanged();
 
     function valueChanged() {
-      $scope.yards = $scope.CubicYardAmount($scope.length, $scope.width, $scope.depth);
-      $scope.buckets = $scope.BucketAmount($scope.yards);
+      $scope.yards = CalculatorService.CubicYardAmount($scope.length, $scope.width, $scope.depth);
+      $scope.buckets = CalculatorService.BucketAmount($scope.yards);
       $scope.deliveries = Math.ceil($scope.buckets / $scope.selectedProduct.deliveryLimit);
       $scope.deliveryFee = $scope.deliveries * 25;
+      $scope.totalCost = $scope.buckets * $scope.selectedProduct.price + ($scope.delivered && $scope.buckets > 0 ? $scope.deliveryFee : 0);
     }
 
   }

@@ -17,13 +17,13 @@
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" ng-model="delivered"> I'd like this delivered for an additional &dollar;{{ deliveryFee }}
+      <input type="checkbox" ng-model="delivered" ng-change="valueChanged()"> I'd like this delivered for an additional &dollar;{{ deliveryFee }}
     </label>
   </div>
 </div>
 
 <div class="col-md-4">
   <h2 class="text-center">You need <strong>{{ yards }}</strong> cubic yard{{ yards == 1 ? "" : "s" }} of {{ selectedProduct.name }} or <strong>{{ buckets }}</strong> bucket{{ buckets == 1 ? "" : "s"}}.</h2>
-  <h1 class="text-center">Your total cost {{delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ BucketAmount(yards) * selectedProduct.price + (delivered && buckets > 0 ? deliveryFee : 0)}}</strong></h1>
+  <h1 class="text-center">Your total cost {{delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ totalCost }}</strong></h1>
   <p class="bg-info text-center" ng-if="buckets > selectedProduct.deliveryLimit && delivered"><i class="fa fa-info-circle"></i> {{ selectedProduct.deliveryLimit }} buckets is our maximum delivery amount for {{ selectedProduct.name }}. Your order would have to be split into {{ deliveries }} deliver{{ deliveries == 1 ? "y" : "ies"}}.</p>
 </div>
