@@ -7,6 +7,8 @@
 
     $scope.valueChanged = valueChanged;
 
+    $scope.title = "Area";
+
     $scope.length = 0;
     $scope.width = 0;
     $scope.depth = 3;

@@ -6,7 +6,7 @@
       $routeProvider
 
     // route for the home page
-    .when('xx/', {
+    .when('/x', {
       templateUrl : 'pages/home.html',
       controller  : 'mainController'
     })
@@ -21,6 +21,13 @@
     .when('/contact', {
       templateUrl : 'pages/contact.html',
       controller  : 'contactController'
+    })
+
+    // route for bag calculator
+    .when('/bags', {
+      templateUrl: 'app/components/home/bag.view.html',
+      controller: 'HomeController',
+      controllerAs: 'ctrl'
     })
 
     // default route to home page
