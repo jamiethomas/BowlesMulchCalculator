@@ -25,8 +25,8 @@
 
     // route for bag calculator
     .when('/bags', {
-      templateUrl: 'app/components/home/bag.view.html',
-      controller: 'HomeController',
+      templateUrl: 'app/components/bag/bag.view.html',
+      controller: 'BagController',
       controllerAs: 'ctrl'
     })
 
