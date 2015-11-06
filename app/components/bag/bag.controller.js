@@ -3,7 +3,7 @@
     .module("app")
     .controller("BagController", BagController);
 
-  function BagController($scope, CalculatorService, ProductService) {
+  function BagController($scope, CalculatorService, BagService, ProductService) {
 
     $scope.valueChanged = valueChanged;
 
@@ -20,6 +20,9 @@
 
     $scope.delivered = false;
 
+    $scope.bags = BagService.getBags();
+    $scope.selectedBag = $scope.bags[0];
+
     $scope.products = ProductService.getProducts();
     $scope.selectedProduct = $scope.products[0];
 
@@ -29,7 +32,7 @@
 
       var deliveryFee = 25;
 
-      $scope.yards = CalculatorService.BagsToYards($scope.size, $scope.count);
+      $scope.yards = CalculatorService.BagsToYards($scope.selectedBag.size, $scope.count);
       $scope.buckets = CalculatorService.BucketAmount($scope.yards);
       $scope.deliveries = Math.ceil($scope.buckets / $scope.selectedProduct.deliveryLimit);
       $scope.deliveryFee = ($scope.delivered) ? $scope.deliveries * deliveryFee : 0;
