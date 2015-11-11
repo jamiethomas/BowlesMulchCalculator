@@ -12,6 +12,7 @@
       $controller = _$controller_;
 
       $scope = {};
+      $scope.$parent = {};
       testController = $controller('BagController', { $scope: $scope });
     }));
 
@@ -19,6 +20,8 @@
       expect($scope.size).toBe(0);
       expect($scope.count).toBe(0);
       expect($scope.delivered).toBe(false);
+      expect($scope.$parent.title).toBe("Bag Converter");
+
 
       expect($scope.yards).toBe(0);
       expect($scope.buckets).toBe(0);

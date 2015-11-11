@@ -7,7 +7,7 @@
 
     $scope.valueChanged = valueChanged;
 
-    $scope.title = "Bag Converter";
+    $scope.$parent.title = "Bag Converter";
 
     $scope.size = 0;
     $scope.count = 0;

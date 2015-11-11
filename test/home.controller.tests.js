@@ -12,6 +12,7 @@
       $controller = _$controller_;
 
       $scope = {};
+      $scope.$parent = {};
       testController = $controller('HomeController', { $scope: $scope });
     }));
 
@@ -20,12 +21,13 @@
       expect($scope.width).toBe(0);
       expect($scope.depth).toBe(3);
       expect($scope.delivered).toBe(false);
+      expect($scope.$parent.title).toBe("Area Calculator");
 
       expect($scope.yards).toBe(0);
       expect($scope.buckets).toBe(0);
       expect($scope.deliveries).toBe(0);
-      expect($scope.deliveryFee).toBe(0);
       expect($scope.totalCost).toBe(0);
+      expect($scope.deliveryCost).toBe(0);
     });
 
     it("Should handle negative values", function() {
@@ -37,8 +39,8 @@
       expect($scope.yards).toBe(0);
       expect($scope.buckets).toBe(0);
       expect($scope.deliveries).toBe(0);
-      expect($scope.deliveryFee).toBe(0);
       expect($scope.totalCost).toBe(0);
+      expect($scope.deliveryCost).toBe(0);
     });
 
     it("Should handle calculations correctly for pickup", function() {
@@ -50,7 +52,7 @@
       expect($scope.yards).toBe(1);
       expect($scope.buckets).toBe(2);
       expect($scope.deliveries).toBe(1);
-      expect($scope.deliveryFee).toBe(0);
+      expect($scope.deliveryCost).toBe(25);
       expect($scope.totalCost).toBe(30);
 
     });
@@ -65,7 +67,7 @@
       expect($scope.yards).toBe(1);
       expect($scope.buckets).toBe(2);
       expect($scope.deliveries).toBe(1);
-      expect($scope.deliveryFee).toBe(25);
+      expect($scope.deliveryCost).toBe(25);
       expect($scope.totalCost).toBe(55);
 
     });

@@ -13,11 +13,11 @@
   </div>
   <div class="form-group">
     <label for="product">Product</label>
-    <select id="product" class="form-control" ng-model="selectedProduct" ng-options="product.name + ' / &dollar;' + product.price for product in products" ng-change="valueChanged()"></select>
+    <select id="product" class="form-control" ng-model="selectedProduct" ng-options="product.name + ' / &dollar;' + product.price + ' per bucket' for product in products" ng-change="valueChanged()"></select>
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" ng-model="delivered" ng-change="valueChanged()"> I'd like this delivered for an additional &dollar;{{ deliveryFee }}
+      <input type="checkbox" ng-model="delivered" ng-change="valueChanged()"> I'd like this delivered for an additional &dollar;{{ deliveryCost }}
     </label>
   </div>
 </div>

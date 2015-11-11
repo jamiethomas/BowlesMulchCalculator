@@ -1,5 +1,17 @@
 (function() {
   angular
+    .module('app')
+    .controller("MainController", MainController);
+
+  function MainController($scope) {
+    $scope.title = "Calculator";
+    $scope.description = "Use this handy calculator to determine how much product you need.";
+  }
+})();
+
+
+(function() {
+  angular
     .module("app")
     .controller("HomeController", HomeController);
 
@@ -7,7 +19,9 @@
 
     $scope.valueChanged = valueChanged;
 
-    $scope.title = "Area";
+    $scope.$parent.title = "Area Calculator";
+
+    var deliveryFee = 25;
 
     $scope.length = 0;
     $scope.width = 0;
@@ -16,7 +30,8 @@
     $scope.yards = 0;
     $scope.buckets = 0;
     $scope.deliveries = 0;
-    $scope.deliveryFee = 0;
+    $scope.deliveryCost = 0;
+
     $scope.totalCost = 0;
 
     $scope.delivered = false;
@@ -27,14 +42,11 @@
     valueChanged();
 
     function valueChanged() {
-
-      var deliveryFee = 25;
-
       $scope.yards = CalculatorService.CubicYardAmount($scope.length, $scope.width, $scope.depth);
       $scope.buckets = CalculatorService.BucketAmount($scope.yards);
       $scope.deliveries = Math.ceil($scope.buckets / $scope.selectedProduct.deliveryLimit);
-      $scope.deliveryFee = ($scope.delivered) ? $scope.deliveries * deliveryFee : 0;
-      $scope.totalCost = ($scope.buckets * $scope.selectedProduct.price) + $scope.deliveryFee;
+      $scope.deliveryCost = ($scope.buckets > 0) ? $scope.deliveries * deliveryFee : 0;
+      $scope.totalCost = ($scope.buckets * $scope.selectedProduct.price) + (($scope.delivered) ?  $scope.deliveryCost : 0);
     }
 
   }
