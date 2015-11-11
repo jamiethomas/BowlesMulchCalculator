@@ -32,8 +32,8 @@
 
     // default route to home page
     .otherwise({
-      templateUrl: 'app/components/home/home.view.html',
-      controller: 'HomeController',
+      templateUrl: 'app/components/area/area.view.html',
+      controller: 'AreaController',
       controllerAs: 'ctrl'
     });
   });

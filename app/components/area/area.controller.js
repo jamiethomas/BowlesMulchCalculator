@@ -13,9 +13,9 @@
 (function() {
   angular
     .module("app")
-    .controller("HomeController", HomeController);
+    .controller("AreaController", AreaController);
 
-  function HomeController($scope, CalculatorService, ProductService) {
+  function AreaController($scope, CalculatorService, ProductService) {
 
     $scope.valueChanged = valueChanged;
 

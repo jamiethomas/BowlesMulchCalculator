@@ -2,7 +2,7 @@
 (function () {
 
   /* Test Code */
-  describe('Home Controller Tests', function () {
+  describe('Area Controller Tests', function () {
 
     beforeEach(angular.mock.module('app'));
 
@@ -13,7 +13,7 @@
 
       $scope = {};
       $scope.$parent = {};
-      testController = $controller('HomeController', { $scope: $scope });
+      testController = $controller('AreaController', { $scope: $scope });
     }));
 
     it("Check default values", function() {
