@@ -17,12 +17,16 @@
     }));
 
     it("Check default values", function() {
+      expect($scope.$parent.title).toBe("Area Calculator");
+      expect($scope.$parent.description).toBe("Use this handy calculator to determine how much product you need for your coverage area.")
+
+      // Form values
       expect($scope.length).toBe(0);
       expect($scope.width).toBe(0);
       expect($scope.depth).toBe(3);
       expect($scope.delivered).toBe(false);
-      expect($scope.$parent.title).toBe("Area Calculator");
 
+      // Calculated values
       expect($scope.yards).toBe(0);
       expect($scope.buckets).toBe(0);
       expect($scope.deliveries).toBe(0);
@@ -36,6 +40,7 @@
       $scope.depth = -1;
       $scope.valueChanged();
 
+      // Caluclated values
       expect($scope.yards).toBe(0);
       expect($scope.buckets).toBe(0);
       expect($scope.deliveries).toBe(0);
@@ -49,10 +54,11 @@
       $scope.depth = 3;
       $scope.valueChanged();
 
+      // Calculated values
       expect($scope.yards).toBe(1);
       expect($scope.buckets).toBe(2);
       expect($scope.deliveries).toBe(1);
-      expect($scope.deliveryCost).toBe(25);
+      expect($scope.deliveryCost).toBe(25); // Delivery fee is calculated but not applied
       expect($scope.totalCost).toBe(30);
 
     });
@@ -64,6 +70,7 @@
       $scope.delivered = true;
       $scope.valueChanged();
 
+      // Calculated values
       expect($scope.yards).toBe(1);
       expect($scope.buckets).toBe(2);
       expect($scope.deliveries).toBe(1);

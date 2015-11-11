@@ -10,7 +10,8 @@
       var factory = {
         CubicYardAmount : CubicYardAmount,
         BucketAmount : BucketAmount,
-        BagsToYards : BagsToYards
+        BagsToYards : BagsToYards,
+        // CalculateOrder : CalculateOrder
       };
 
       function CubicYardAmount(length, width, depth) {
@@ -35,6 +36,16 @@
         return buckets;
       }
 
+    //  function CalculateOrder(length, width, depth, $scope) {
+    //    $scope.yards = CubicYardAmount(length, width, depth);
+    //    $scope.buckets = BucketAmount($scope.yards);
+    //    $scope.deliveries = Math.ceil($scope.buckets / $scope.selectedProduct.deliveryLimit);
+    //    $scope.deliveryCost = ($scope.buckets > 0) ? $scope.deliveries * deliveryFee : 0;
+    //    $scope.totalCost = ($scope.buckets * $scope.selectedProduct.price) + (($scope.delivered) ?  $scope.deliveryCost : 0);
+     //
+    //    return $scope;
+    //  }
+
      return factory;
    }
 
@@ -46,7 +57,7 @@
      }
 
      return yards;
-
    }
+
 
 })();

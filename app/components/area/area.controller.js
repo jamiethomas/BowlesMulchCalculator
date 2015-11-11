@@ -8,6 +8,7 @@
     $scope.valueChanged = valueChanged;
 
     $scope.$parent.title = "Area Calculator";
+    $scope.$parent.description = "Use this handy calculator to determine how much product you need for your coverage area.";
 
     var deliveryFee = 25;
 
@@ -29,7 +30,13 @@
 
     valueChanged();
 
+    /*
+     * Change this to CalculateOrder()
+     * Have it return an order object
+     */
+
     function valueChanged() {
+      // CalculatorService.CalculateOrder($scope.length, $scope.width, $scope.depth, $scope);
       $scope.yards = CalculatorService.CubicYardAmount($scope.length, $scope.width, $scope.depth);
       $scope.buckets = CalculatorService.BucketAmount($scope.yards);
       $scope.deliveries = Math.ceil($scope.buckets / $scope.selectedProduct.deliveryLimit);
