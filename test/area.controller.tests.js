@@ -26,40 +26,42 @@
       expect($scope.depth).toBe(3);
       expect($scope.delivered).toBe(false);
 
-      // Calculated values
-      expect($scope.yards).toBe(0);
-      expect($scope.buckets).toBe(0);
-      expect($scope.deliveries).toBe(0);
-      expect($scope.totalCost).toBe(0);
-      expect($scope.deliveryCost).toBe(0);
+      // Check Order
+      expect($scope.order).not.toBe(null);
+      expect($scope.order.yards).toBe(0);
+      expect($scope.order.buckets).toBe(0);
+      expect($scope.order.deliveries).toBe(0);
+      expect($scope.order.totalCost).toBe(0);
+      expect($scope.order.deliveryCost).toBe(0);
+
     });
 
     it("Should handle negative values", function() {
       $scope.length = -1;
       $scope.width = -1;
       $scope.depth = -1;
-      $scope.valueChanged();
+      $scope.calculateOrder();
 
       // Caluclated values
-      expect($scope.yards).toBe(0);
-      expect($scope.buckets).toBe(0);
-      expect($scope.deliveries).toBe(0);
-      expect($scope.totalCost).toBe(0);
-      expect($scope.deliveryCost).toBe(0);
+      expect($scope.order.yards).toBe(0);
+      expect($scope.order.buckets).toBe(0);
+      expect($scope.order.deliveries).toBe(0);
+      expect($scope.order.totalCost).toBe(0);
+      expect($scope.order.deliveryCost).toBe(0);
     });
 
     it("Should handle calculations correctly for pickup", function() {
       $scope.length = 10;
       $scope.width = 10;
       $scope.depth = 3;
-      $scope.valueChanged();
+      $scope.calculateOrder();
 
       // Calculated values
-      expect($scope.yards).toBe(1);
-      expect($scope.buckets).toBe(2);
-      expect($scope.deliveries).toBe(1);
-      expect($scope.deliveryCost).toBe(25); // Delivery fee is calculated but not applied
-      expect($scope.totalCost).toBe(30);
+      expect($scope.order.yards).toBe(1);
+      expect($scope.order.buckets).toBe(2);
+      expect($scope.order.deliveries).toBe(1);
+      expect($scope.order.deliveryCost).toBe(25); // Delivery fee is calculated but not applied
+      expect($scope.order.totalCost).toBe(30);
 
     });
 
@@ -68,14 +70,14 @@
       $scope.width = 10;
       $scope.depth = 3;
       $scope.delivered = true;
-      $scope.valueChanged();
+      $scope.calculateOrder();
 
       // Calculated values
-      expect($scope.yards).toBe(1);
-      expect($scope.buckets).toBe(2);
-      expect($scope.deliveries).toBe(1);
-      expect($scope.deliveryCost).toBe(25);
-      expect($scope.totalCost).toBe(55);
+      expect($scope.order.yards).toBe(1);
+      expect($scope.order.buckets).toBe(2);
+      expect($scope.order.deliveries).toBe(1);
+      expect($scope.order.deliveryCost).toBe(25);
+      expect($scope.order.totalCost).toBe(55);
 
     });
 });

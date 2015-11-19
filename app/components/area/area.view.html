@@ -1,29 +1,29 @@
 <div class="col-md-8">
   <div class="form-group">
     <label for="length">Length of coverage area in feet</label>
-    <input id="length" class="form-control" type="number" ng-model="length" ng-change="valueChanged()" placeholder="Length in feet">
+    <input id="length" class="form-control" type="number" ng-model="length" ng-change="calculateOrder()" placeholder="Length in feet">
   </div>
   <div class="form-group">
     <label for="width">Width of coverage area in feet</label>
-    <input id="width" class="form-control" type="number" ng-model="width" ng-change="valueChanged()" placeholder="Width in feet">
+    <input id="width" class="form-control" type="number" ng-model="width" ng-change="calculateOrder()" placeholder="Width in feet">
   </div>
   <div class="form-group">
     <label for="depth">Product depth in inches <small>(we recommend 3")</small></label>
-    <input id="depth" class="form-control" type="number" ng-model="depth" ng-change="valueChanged()" placeholder="Depth in inches">
+    <input id="depth" class="form-control" type="number" ng-model="depth" ng-change="calculateOrder()" placeholder="Depth in inches">
   </div>
   <div class="form-group">
     <label for="product">Product</label>
-    <select id="product" class="form-control" ng-model="selectedProduct" ng-options="product.name + ' / &dollar;' + product.price + ' per bucket' for product in products" ng-change="valueChanged()"></select>
+    <select id="product" class="form-control" ng-model="selectedProduct" ng-options="product.name + ' / &dollar;' + product.price + ' per bucket' for product in products" ng-change="calculateOrder()"></select>
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" ng-model="delivered" ng-change="valueChanged()"> I'd like this delivered for an additional &dollar;{{ deliveryCost }}
+      <input type="checkbox" ng-model="delivered" ng-change="calculateOrder()"> I'd like this delivered as {{order.deliveries}} deliver{{ order.deliveries == 1 ? "y" : "ies"}} for an additional &dollar;{{ order.deliveryCost }}
     </label>
   </div>
 </div>
 
 <div class="col-md-4">
-  <h2 class="text-center">You need <strong>{{ yards }}</strong> cubic yard{{ yards == 1 ? "" : "s" }} of {{ selectedProduct.name }} or <strong>{{ buckets }}</strong> bucket{{ buckets == 1 ? "" : "s"}}.</h2>
-  <h1 class="text-center">Your total cost {{delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ totalCost }}</strong></h1>
-  <p class="bg-info text-center" ng-if="buckets > selectedProduct.deliveryLimit && delivered"><i class="fa fa-info-circle"></i> {{ selectedProduct.deliveryLimit }} buckets is our maximum delivery amount for {{ selectedProduct.name }}. Your order would have to be split into {{ deliveries }} deliver{{ deliveries == 1 ? "y" : "ies"}}.</p>
+  <h2 class="text-center">You need <strong>{{ order.yards }}</strong> cubic yard{{ order.yards == 1 ? "" : "s" }} of {{ selectedProduct.name }} or <strong>{{ order.buckets }}</strong> bucket{{ order.buckets == 1 ? "" : "s"}}.</h2>
+  <h1 class="text-center">Your total cost {{delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ order.totalCost }}</strong></h1>
+  <p class="bg-info text-center" ng-if="order.buckets > selectedProduct.deliveryLimit && delivered"><i class="fa fa-info-circle"></i> {{ selectedProduct.deliveryLimit }} buckets is our maximum delivery amount for {{ selectedProduct.name }}. Your order would have to be split into {{ order.deliveries }} deliver{{ order.deliveries == 1 ? "y" : "ies"}}.</p>
 </div>
