@@ -11,7 +11,7 @@
         CubicYardAmount : CubicYardAmount,
         BucketAmount : BucketAmount,
         BagsToYards : BagsToYards,
-        // CalculateOrder : CalculateOrder
+        CalculateOrder : CalculateOrder
       };
 
       function CubicYardAmount(length, width, depth) {
@@ -36,15 +36,20 @@
         return buckets;
       }
 
-    //  function CalculateOrder(length, width, depth, $scope) {
-    //    $scope.yards = CubicYardAmount(length, width, depth);
-    //    $scope.buckets = BucketAmount($scope.yards);
-    //    $scope.deliveries = Math.ceil($scope.buckets / $scope.selectedProduct.deliveryLimit);
-    //    $scope.deliveryCost = ($scope.buckets > 0) ? $scope.deliveries * deliveryFee : 0;
-    //    $scope.totalCost = ($scope.buckets * $scope.selectedProduct.price) + (($scope.delivered) ?  $scope.deliveryCost : 0);
-     //
-    //    return $scope;
-    //  }
+      function CalculateOrder(length, width, depth, selectedProduct, delivered) {
+
+       var order = {};
+
+       var deliveryFee = 25; // Make this a parameter
+
+       order.yards = CubicYardAmount(length, width, depth);
+       order.buckets = BucketAmount(order.yards);
+       order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
+       order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
+       order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
+
+       return order;
+      }
 
      return factory;
    }

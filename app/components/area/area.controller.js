@@ -28,14 +28,7 @@
      */
 
     function calculateOrder() {
-      // CalculatorService.CalculateOrder($scope.length, $scope.width, $scope.depth, $scope);
-      order = {};
-      order.yards = CalculatorService.CubicYardAmount($scope.length, $scope.width, $scope.depth);
-      order.buckets = CalculatorService.BucketAmount(order.yards);
-      order.deliveries = Math.ceil(order.buckets / $scope.selectedProduct.deliveryLimit);
-      order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
-      order.totalCost = (order.buckets * $scope.selectedProduct.price) + (($scope.delivered) ?  order.deliveryCost : 0);
-      $scope.order = order;
+      $scope.order = CalculatorService.CalculateOrder($scope.length, $scope.width, $scope.depth, $scope.selectedProduct, $scope.delivered);
     }
 
   }
