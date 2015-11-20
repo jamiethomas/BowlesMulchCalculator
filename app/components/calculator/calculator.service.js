@@ -11,7 +11,7 @@
         CubicYardAmount : CubicYardAmount,
         BucketAmount : BucketAmount,
         BagsToYards : BagsToYards,
-        CalculateOrder : CalculateOrder
+        CalculateOrderByArea : CalculateOrderByArea
       };
 
       function CubicYardAmount(length, width, depth) {
@@ -36,7 +36,7 @@
         return buckets;
       }
 
-      function CalculateOrder(length, width, depth, selectedProduct, delivered) {
+      function CalculateOrderByArea(length, width, depth, selectedProduct, delivered) {
 
        var order = {};
 

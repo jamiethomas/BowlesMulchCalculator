@@ -12,10 +12,10 @@
       testService = CalculatorService;
     }));
 
-    describe("CalculateOrder Tests", function() {
+    describe("CalculateOrderByArea Tests", function() {
 
-      it("CalculateOrder should not be null", function() {
-        expect(testService.CalculateOrder).toBeDefined();
+      it("CalculateOrderByArea should not be null", function() {
+        expect(testService.CalculateOrderByArea).toBeDefined();
       });
 
       it("Check default values", function() {
@@ -26,7 +26,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrder(length, width, depth, selectedProduct, delivered);
+        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered);
 
         // Form values
         expect(length).toBe(0);
@@ -51,7 +51,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrder(length, width, depth, selectedProduct, delivered);
+        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered);
 
         // Caluclated values
         expect(order.yards).toBe(0);
@@ -68,7 +68,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrder(length, width, depth, selectedProduct, delivered);
+        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered);
 
         // Calculated values
         expect(order.yards).toBe(1);
@@ -86,7 +86,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = true;
 
-        var order = testService.CalculateOrder(length, width, depth, selectedProduct, delivered);
+        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered);
 
         // Calculated values
         expect(order.yards).toBe(1);

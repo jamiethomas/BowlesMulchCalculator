@@ -28,7 +28,7 @@
      */
 
     function calculateOrder() {
-      $scope.order = CalculatorService.CalculateOrder($scope.length, $scope.width, $scope.depth, $scope.selectedProduct, $scope.delivered);
+      $scope.order = CalculatorService.CalculateOrderByArea($scope.length, $scope.width, $scope.depth, $scope.selectedProduct, $scope.delivered);
     }
 
   }
