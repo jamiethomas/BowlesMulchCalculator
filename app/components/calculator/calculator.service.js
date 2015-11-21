@@ -11,8 +11,10 @@
         CubicYardAmount : CubicYardAmount,
         BucketAmount : BucketAmount,
         BagsToYards : BagsToYards,
+        BucketsToYards : BucketsToYards,
         CalculateOrderByArea : CalculateOrderByArea,
-        CalculateOrderByBags : CalculateOrderByBags
+        CalculateOrderByBags : CalculateOrderByBags,
+        CalculateOrderByBuckets : CalculateOrderByBuckets
       };
 
       function CubicYardAmount(length, width, depth) {
@@ -47,6 +49,16 @@
         return yards;
       }
 
+      function BucketsToYards(buckets) {
+        var yards = 0;
+
+        if (buckets > 0 && buckets > 0) {
+          yards = Math.round(buckets / 2);
+        }
+
+        return yards;
+      }
+
       function CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee) {
 
          var order = {};
@@ -76,6 +88,21 @@
 
         return order;
 
+      }
+
+      function CalculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee) {
+
+        var order = {};
+
+        order.yards = BucketsToYards(buckets);
+        order.buckets = BucketAmount(order.yards);
+        order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
+        order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
+        order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
+        order.delivered = delivered;
+        order.selectedProduct = selectedProduct;
+
+        return order;
       }
 
      return factory;
