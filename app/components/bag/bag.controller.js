@@ -5,19 +5,14 @@
 
   function BagController($scope, CalculatorService, BagService, ProductService) {
 
-    $scope.valueChanged = valueChanged;
+    $scope.calculateOrder = calculateOrder;
 
     $scope.$parent.title = "Bag Converter";
+    $scope.$parent.description = "Use this handy calculator to determine how much product you need based on the size and number of bags you have used in the past.";
+
 
     $scope.size = 0;
     $scope.count = 0;
-
-    $scope.yards = 0;
-    $scope.buckets = 0;
-    $scope.deliveries = 0;
-    $scope.deliveryFee = 0;
-    $scope.totalCost = 0;
-
     $scope.delivered = false;
 
     $scope.bags = BagService.getBags();
@@ -26,17 +21,16 @@
     $scope.products = ProductService.getProducts();
     $scope.selectedProduct = $scope.products[0];
 
-    valueChanged();
+    calculateOrder();
 
-    function valueChanged() {
-
-      var deliveryFee = 25;
-
-      $scope.yards = CalculatorService.BagsToYards($scope.selectedBag.size, $scope.count);
-      $scope.buckets = CalculatorService.BucketAmount($scope.yards);
-      $scope.deliveries = Math.ceil($scope.buckets / $scope.selectedProduct.deliveryLimit);
-      $scope.deliveryFee = ($scope.delivered) ? $scope.deliveries * deliveryFee : 0;
-      $scope.totalCost = ($scope.buckets * $scope.selectedProduct.price) + $scope.deliveryFee;
+    function calculateOrder() {
+      $scope.order = CalculatorService.CalculateOrderByBags(
+        $scope.selectedBag.size,
+        $scope.count,
+        $scope.selectedProduct,
+        $scope.delivered,
+        ProductService.getDeliveryFee()
+      );
     }
 
   }

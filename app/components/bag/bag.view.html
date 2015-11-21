@@ -1,25 +1,21 @@
 <div class="col-md-8">
   <div class="form-group">
     <label for="product">Product</label>
-    <select id="product" class="form-control" ng-model="selectedProduct" ng-options="product.name + ' / &dollar;' + product.price for product in products" ng-change="valueChanged()"></select>
+    <select id="product" class="form-control" ng-model="selectedProduct" ng-options="product.name + ' / &dollar;' + product.price for product in products" ng-change="calculateOrder()"></select>
   </div>
   <div class="form-group">
     <label for="size">Bag Size</label>
-    <select id="size" class="form-control" ng-model="selectedBag" ng-options="bag.name for bag in bags" ng-change="valueChanged()"></select>
+    <select id="size" class="form-control" ng-model="selectedBag" ng-options="bag.name for bag in bags" ng-change="calculateOrder()"></select>
   </div>
   <div class="form-group">
     <label for="count">Number of bags</label>
-    <input id="count" class="form-control" type="number" ng-model="count" ng-change="valueChanged()" placeholder="Width in feet">
+    <input id="count" class="form-control" type="number" ng-model="count" ng-change="calculateOrder()" placeholder="Bag count">
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" ng-model="delivered" ng-change="valueChanged()"> I'd like this delivered for an additional &dollar;{{ deliveryFee }}
+      <input type="checkbox" ng-model="delivered" ng-change="calculateOrder()"> I'd like this delivered as {{order.deliveries}} deliver{{ order.deliveries == 1 ? "y" : "ies"}} for an additional &dollar;{{ order.deliveryCost }}
     </label>
   </div>
 </div>
 
-<div class="col-md-4">
-  <h2 class="text-center">You need <strong>{{ yards }}</strong> cubic yard{{ yards == 1 ? "" : "s" }} of {{ selectedProduct.name }} or <strong>{{ buckets }}</strong> bucket{{ buckets == 1 ? "" : "s"}}.</h2>
-  <h1 class="text-center">Your total cost {{delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ totalCost }}</strong></h1>
-  <p class="bg-info text-center" ng-if="buckets > selectedProduct.deliveryLimit && delivered"><i class="fa fa-info-circle"></i> {{ selectedProduct.deliveryLimit }} buckets is our maximum delivery amount for {{ selectedProduct.name }}. Your order would have to be split into {{ deliveries }} deliver{{ deliveries == 1 ? "y" : "ies"}}.</p>
-</div>
+<order-details order="order"></order-details>
