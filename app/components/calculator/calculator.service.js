@@ -55,6 +55,8 @@
          order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
          order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
          order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
+         order.delivered = delivered;
+         order.selectedProduct = selectedProduct;
 
        return order;
       }

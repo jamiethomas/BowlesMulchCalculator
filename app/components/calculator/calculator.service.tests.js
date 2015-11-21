@@ -62,6 +62,8 @@
         expect(order.deliveries).toBe(0);
         expect(order.totalCost).toBe(0);
         expect(order.deliveryCost).toBe(0);
+        expect(order.delivered).toBe(delivered);
+        expect(order.selectedProduct).toBe(selectedProduct);
       });
 
       it("Should handle calculations correctly for pickup", function() {
@@ -79,6 +81,8 @@
         expect(order.deliveries).toBe(1);
         expect(order.deliveryCost).toBe(25); // Delivery fee is calculated but not applied
         expect(order.totalCost).toBe(30);
+        expect(order.delivered).toBe(delivered);
+        expect(order.selectedProduct).toBe(selectedProduct);
 
       });
 
@@ -97,6 +101,8 @@
         expect(order.deliveries).toBe(1);
         expect(order.deliveryCost).toBe(25);
         expect(order.totalCost).toBe(55);
+        expect(order.delivered).toBe(delivered);
+        expect(order.selectedProduct).toBe(selectedProduct);
 
       });
 
