@@ -105,6 +105,110 @@
         expect(order.selectedProduct).toBe(selectedProduct);
 
       });
+    });
+
+    describe("CalculateOrderByBags Tests", function() {
+
+      it("CalculateOrderByBags should not be null", function() {
+        expect(testService.CalculateOrderByBags).toBeDefined();
+      });
+
+      it("Check default values", function() {
+        var size = 0;
+        var count = 0;
+        var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
+        var delivered = false;
+
+        var order = testService.CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
+
+        // Form values
+        expect(size).toBe(0);
+        expect(count).toBe(0);
+        expect(delivered).toBe(false);
+
+        // Check Order
+        expect(order).not.toBe(null);
+        expect(order.yards).toBe(0);
+        expect(order.buckets).toBe(0);
+        expect(order.deliveries).toBe(0);
+        expect(order.totalCost).toBe(0);
+        expect(order.deliveryCost).toBe(0);
+        expect(order.delivered).toBe(delivered);
+        expect(order.selectedProduct).toBe(selectedProduct);
+
+      });
+
+      it("Should handle negative values", function() {
+        var size = -1;
+        var count = -1;
+        var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
+        var delivered = false;
+
+        var order = testService.CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
+
+        // Form values
+        expect(size).toBe(-1);
+        expect(count).toBe(-1);
+        expect(delivered).toBe(false);
+
+        // Check Order
+        expect(order).not.toBe(null);
+        expect(order.yards).toBe(0);
+        expect(order.buckets).toBe(0);
+        expect(order.deliveries).toBe(0);
+        expect(order.totalCost).toBe(0);
+        expect(order.deliveryCost).toBe(0);
+        expect(order.delivered).toBe(delivered);
+        expect(order.selectedProduct).toBe(selectedProduct);
+      });
+
+      it("Should handle calculations correctly for pickup", function() {
+        var size = 1.5;
+        var count = 18;
+        var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
+        var delivered = false;
+
+        var order = testService.CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
+
+        // Form values
+        expect(size).toBe(1.5);
+        expect(count).toBe(18);
+        expect(delivered).toBe(false);
+
+        // Check Order
+        expect(order).not.toBe(null);
+        expect(order.yards).toBe(1);
+        expect(order.buckets).toBe(2);
+        expect(order.deliveries).toBe(1);
+        expect(order.totalCost).toBe(30);
+        expect(order.deliveryCost).toBe(25);
+        expect(order.delivered).toBe(delivered);
+        expect(order.selectedProduct).toBe(selectedProduct);
+      });
+
+      it("Should handle calculations correctly for delivery", function() {
+        var size = 1.5;
+        var count = 18;
+        var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
+        var delivered = true;
+
+        var order = testService.CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
+
+        // Form values
+        expect(size).toBe(1.5);
+        expect(count).toBe(18);
+        expect(delivered).toBe(true);
+
+        // Check Order
+        expect(order).not.toBe(null);
+        expect(order.yards).toBe(1);
+        expect(order.buckets).toBe(2);
+        expect(order.deliveries).toBe(1);
+        expect(order.totalCost).toBe(55);
+        expect(order.deliveryCost).toBe(25);
+        expect(order.delivered).toBe(delivered);
+        expect(order.selectedProduct).toBe(selectedProduct);
+      });
 
 
     });

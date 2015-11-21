@@ -11,7 +11,8 @@
         CubicYardAmount : CubicYardAmount,
         BucketAmount : BucketAmount,
         BagsToYards : BagsToYards,
-        CalculateOrderByArea : CalculateOrderByArea
+        CalculateOrderByArea : CalculateOrderByArea,
+        CalculateOrderByBags : CalculateOrderByBags
       };
 
       function CubicYardAmount(length, width, depth) {
@@ -59,6 +60,22 @@
          order.selectedProduct = selectedProduct;
 
        return order;
+      }
+
+      function CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee) {
+
+        var order = {};
+
+        order.yards = BagsToYards(size, count);
+        order.buckets = BucketAmount(order.yards);
+        order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
+        order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
+        order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
+        order.delivered = delivered;
+        order.selectedProduct = selectedProduct;
+
+        return order;
+
       }
 
      return factory;
