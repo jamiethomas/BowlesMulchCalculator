@@ -22,6 +22,8 @@
   </div>
 </div>
 
+<order-details order="{{ order }}"></order-details>
+
 <div class="col-md-4">
   <h2 class="text-center">You need <strong>{{ order.yards }}</strong> cubic yard{{ order.yards == 1 ? "" : "s" }} of {{ selectedProduct.name }} or <strong>{{ order.buckets }}</strong> bucket{{ order.buckets == 1 ? "" : "s"}}.</h2>
   <h1 class="text-center">Your total cost {{delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ order.totalCost }}</strong></h1>

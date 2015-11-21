@@ -42,6 +42,8 @@
         expect(order.deliveries).toBe(0);
         expect(order.totalCost).toBe(0);
         expect(order.deliveryCost).toBe(0);
+        expect(order.delivered).toBe(delivered);
+        expect(order.selectedProduct).toBe(selectedProduct);
 
       });
 
