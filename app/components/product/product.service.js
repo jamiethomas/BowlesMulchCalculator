@@ -9,7 +9,8 @@
 
       var factory = {
         getProducts : getProducts,
-        getDefaultProduct : getDefaultProduct
+        getDefaultProduct : getDefaultProduct,
+        getDeliveryFee : getDeliveryFee
       };
 
       function getProducts() {
@@ -25,6 +26,10 @@
 
       function getDefaultProduct() {
         return getProducts()[0];
+      }
+
+      function getDeliveryFee() {
+        return 25;
       }
 
      return factory;
