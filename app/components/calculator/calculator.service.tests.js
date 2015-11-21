@@ -10,6 +10,7 @@
 
     beforeEach(angular.mock.inject(function(CalculatorService) {
       testService = CalculatorService;
+      deliveryFee = 25;
     }));
 
     describe("CalculateOrderByArea Tests", function() {
@@ -26,7 +27,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered);
+        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(length).toBe(0);
@@ -51,7 +52,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered);
+        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
 
         // Caluclated values
         expect(order.yards).toBe(0);
@@ -68,7 +69,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered);
+        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
 
         // Calculated values
         expect(order.yards).toBe(1);
@@ -86,7 +87,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = true;
 
-        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered);
+        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
 
         // Calculated values
         expect(order.yards).toBe(1);

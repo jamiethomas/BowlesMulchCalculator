@@ -14,8 +14,6 @@
         CalculateOrderByArea : CalculateOrderByArea
       };
 
-      var DELIVERY_FEE = 25;
-
       function CubicYardAmount(length, width, depth) {
 
         var yards = 0;
@@ -48,14 +46,14 @@
         return yards;
       }
 
-      function CalculateOrderByArea(length, width, depth, selectedProduct, delivered) {
+      function CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee) {
 
          var order = {};
 
          order.yards = CubicYardAmount(length, width, depth);
          order.buckets = BucketAmount(order.yards);
          order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
-         order.deliveryCost = (order.buckets > 0) ? order.deliveries * DELIVERY_FEE : 0;
+         order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
          order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
 
        return order;
