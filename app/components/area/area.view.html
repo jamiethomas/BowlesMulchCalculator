@@ -22,10 +22,4 @@
   </div>
 </div>
 
-<order-details order="{{ order }}"></order-details>
-
-<div class="col-md-4">
-  <h2 class="text-center">You need <strong>{{ order.yards }}</strong> cubic yard{{ order.yards == 1 ? "" : "s" }} of {{ selectedProduct.name }} or <strong>{{ order.buckets }}</strong> bucket{{ order.buckets == 1 ? "" : "s"}}.</h2>
-  <h1 class="text-center">Your total cost {{delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ order.totalCost }}</strong></h1>
-  <p class="bg-info text-center" ng-if="order.buckets > selectedProduct.deliveryLimit && delivered"><i class="fa fa-info-circle"></i> {{ selectedProduct.deliveryLimit }} buckets is our maximum delivery amount for {{ selectedProduct.name }}. Your order would have to be split into {{ order.deliveries }} deliver{{ order.deliveries == 1 ? "y" : "ies"}}.</p>
-</div>
+<order-details order="order"></order-details>

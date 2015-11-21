@@ -6,16 +6,14 @@
   function OrderDetails() {
 
     var directive = {
-      link: link,
-      templateUrl: 'order-details.html',
+      templateUrl: 'app/components/order/order-details.html',
       restrict: "E",
-      scope : {} // directive gets new scope
+      scope : {
+          order: "="
+      }
     };
 
     return directive;
 
-    function link(scope, element, attrs) {
-      scope.order = attrs.order;
-    }
   }
 })();
