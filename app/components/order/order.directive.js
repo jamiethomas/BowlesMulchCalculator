@@ -7,9 +7,9 @@
 
     var directive = {
       templateUrl: 'app/components/order/order-details.html',
-      restrict: "E",
+      restrict: "A",
       scope : {
-          order: "="
+          order: "=orderDetails"
       }
     };
 
