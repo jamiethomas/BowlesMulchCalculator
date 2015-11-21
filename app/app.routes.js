@@ -30,6 +30,13 @@
       controllerAs: 'ctrl'
     })
 
+    // route for order calculator
+    .when('/order', {
+      templateUrl: 'app/components/order/order.view.html',
+      controller: 'OrderController',
+      controllerAs: 'ctrl'
+    })
+
     // default route to home page
     .otherwise({
       templateUrl: 'app/components/area/area.view.html',
