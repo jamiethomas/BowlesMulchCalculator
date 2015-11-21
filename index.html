@@ -1,118 +1,86 @@
 
 <!DOCTYPE html>
-<html >
+<html>
   <head>
     <meta charset="UTF-8">
     <meta name="google" value="notranslate">
-
-
-    <title>CodePen - Bowles Mulch Calcuator</title>
-
-
+    <title>Bowles Mulch Calcuator</title>
 
     <link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
-
-
-
-
-
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
   </head>
 
-  <body>
+  <body ng-app="app">
 
-    <body ng-app="app">
-  <div class="container">
-    <div class="col-md-4">
-    <img src="http://www.bowlesmulch.com/wp-content/ata-images/bowles_mulch.jpg" height="200">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bowles Mulch</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <!-- <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li> -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#area">By Area</a></li>
+            <li><a href="#bags">From Bags</a></li>
+            <li><a href="#order">By Order</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="container" ng-controller="MainController">
+        <div class="col-md-4">
+          <img src="http://www.bowlesmulch.com/wp-content/ata-images/bowles_mulch.jpg" height="200">
+        </div>
+        <div class="col-md-8">
+          <h1 class="jumbotron">{{title}}<p>{{description}}</h1>
+        </div>
+
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view></div>
     </div>
-    <div class="col-md-8">
-    <h1 class="jumbotron">Calculator<p>Use this handy calculator to determine how much product you need.</h1>
-    </div>
-  </div>
-  <div class="container" ng-controller="CalculatorController">
-    <div class="col-md-8">
-      <div class="form-group">
-        <label for="length">Length of coverage area in feet</label>
-        <input id="length" class="form-control" type="number" ng-model="length" placeholder="Length in feet">
-      </div>
-      <div class="form-group">
-        <label for="width">Width of coverage area in feet</label>
-        <input id="width" class="form-control" type="number" ng-model="width" placeholder="Width in feet">
-      </div>
-      <div class="form-group">
-        <label for="depth">Product depth in inches <small>(we recommend 3")</small></label>
-        <input id="depth" class="form-control" type="number" ng-model="depth" placeholder="Depth in inches">
-      </div>
-      <div class="form-group">
-        <label for="depth">Product</label>
-        <select class="form-control" ng-model="selectedProduct" ng-options="product.name + ' / &dollar;' + product.price for product in products"></select>
-      </div>
 
-      <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="delivered"> I'd like this delivered for an additional &dollar;{{ deliveryFee }}
-      </label>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <h2 class="text-center">You need <strong>{{ yards = CubicYardAmount(length, width, depth) }}</strong> cubic yard{{ yards == 1 ? "" : "s" }} of {{ selectedProduct.name }} or <strong>{{ buckets = BucketAmount(yards) }}</strong> bucket{{ buckets == 1 ? "" : "s"}}.</h2>
+    <!-- Angular libraries -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-mocks.js"></script>
 
-      <h1 class="text-center">Your total cost {{delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ BucketAmount(yards) * selectedProduct.price + (delivered && buckets > 0 ? deliveryFee : 0)}}</strong></h1>
-
-      <p class="bg-info text-center" ng-if="buckets > selectedProduct.deliveryLimit && delivered"><i class="fa fa-info-circle"></i> {{ selectedProduct.deliveryLimit }} buckets is our maximum delivery amount for {{ selectedProduct.name }}. Your order would have to be split into {{ deliveries = Math.ceil(buckets / selectedProduct.deliveryLimit) }} deliver{{ deliveries == 1 ? "y" : "ies"}} for an additional &dollar;{{ deliveries * 25 }} fee.</p>
-    </div>
-
-  </div>
-</body>
-
-    <script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js'></script>
-
-        <script>
-      angular
-  .module("app", []);
-
-angular
-  .module("app")
-  .controller("CalculatorController", CalculatorController);
-
-function CalculatorController($scope) {
-  $scope.length = 0;
-  $scope.width = 0;
-  $scope.depth = 3;
-  $scope.price = 15;
-  $scope.delivered = false;
-  $scope.deliveryFee = 25;
-
-  $scope.Math = Math;
-
-  $scope.products = [
-    { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 },
-    { name: "Brown Shredded Hardwood", price: 15, deliveryLimit: 20 },
-    { name: "Black Shredded Hardwood", price: 15, deliveryLimit: 20 },
-    { name: "Compro", price: 17, deliveryLimit: 12 },
-    { name: "Manure", price: 15, deliveryLimit: 12 },
-    { name: "Top Soil", price: 15, deliveryLimit: 12 }
-  ]
-
-  $scope.selectedProduct = $scope.products[0];
-
-  $scope.CubicYardAmount = CubicYardAmount;
-  $scope.BucketAmount = BucketAmount;
-
-  function CubicYardAmount(length, width, depth) {
-    return Math.round(length * width * (depth / 12) / 27);
-  }
-
-  function BucketAmount(yards) {
-    return yards / .5
-  }
-}
-      //@ sourceURL=pen.js
-    </script>
-
-
-
+    <!-- Local libraries -->
+    <script src="app/app.js"></script>
+    <script src="app/app.routes.js"></script>
+    <script src="app/components/calculator/calculator.service.js"></script>
+    <script src="app/components/bag/bag.service.js"></script>
+    <script src="app/components/product/product.service.js"></script>
+    <script src="app/components/main/main.controller.js"></script>
+    <script src="app/components/area/area.controller.js"></script>
+    <script src="app/components/bag/bag.controller.js"></script>
+    <script src="app/components/order/order.controller.js"></script>
+    <script src="app/components/order/order.directive.js"></script>
 
   </body>
 </html>

@@ -1,0 +1,5 @@
+<div class="col-md-4">
+  <h2 class="text-center">You need <strong>{{ order.yards }}</strong> cubic yard{{ order.yards == 1 ? "" : "s" }} of {{ order.selectedProduct.name }} or <strong>{{ order.buckets }}</strong> bucket{{ order.buckets == 1 ? "" : "s"}}.</h2>
+  <h1 class="text-center">Your total cost {{order.delivered ? "with delivery ": "" }}is<br/> <strong>&dollar;{{ order.totalCost }}</strong></h1>
+  <p class="bg-info text-center" ng-if="order.buckets > order.selectedProduct.deliveryLimit && order.delivered"><i class="fa fa-info-circle"></i> {{ order.selectedProduct.deliveryLimit }} buckets is our maximum delivery amount for {{ order.selectedProduct.name }}. Your order would have to be split into {{ order.deliveries }} deliver{{ order.deliveries == 1 ? "y" : "ies"}}.</p>
+</div>
