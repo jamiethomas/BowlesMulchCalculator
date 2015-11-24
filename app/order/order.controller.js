@@ -3,7 +3,7 @@
     .module("app")
     .controller("OrderController", OrderController);
 
-  function OrderController($scope, CalculatorService, ProductService) {
+  function OrderController($scope, CONFIG, CalculatorService, ProductService) {
 
     $scope.calculateOrder = calculateOrder;
 
@@ -23,7 +23,7 @@
         $scope.buckets,
         $scope.selectedProduct,
         $scope.delivered,
-        ProductService.getDeliveryFee()
+        CONFIG.DELIVERY_FEE
       );
     }
 

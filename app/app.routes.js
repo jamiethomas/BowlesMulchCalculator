@@ -25,21 +25,21 @@
 
     // route for bag calculator
     .when('/bags', {
-      templateUrl: 'app/components/bag/bag.view.html',
+      templateUrl: 'app/bag/bag.view.html',
       controller: 'BagController',
       controllerAs: 'ctrl'
     })
 
     // route for order calculator
     .when('/order', {
-      templateUrl: 'app/components/order/order.view.html',
+      templateUrl: 'app/order/order.view.html',
       controller: 'OrderController',
       controllerAs: 'ctrl'
     })
 
     // default route to home page
     .otherwise({
-      templateUrl: 'app/components/area/area.view.html',
+      templateUrl: 'app/area/area.view.html',
       controller: 'AreaController',
       controllerAs: 'ctrl'
     });

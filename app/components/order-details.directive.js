@@ -6,7 +6,7 @@
   function OrderDetails() {
 
     var directive = {
-      templateUrl: 'app/components/order/order-details.html',
+      templateUrl: 'app/components/order-details.directive.html',
       restrict: "A",
       scope : {
           order: "=orderDetails"

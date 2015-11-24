@@ -20,10 +20,6 @@
       expect(testService.getProducts()[0]).toEqual(testService.getDefaultProduct());
     });
 
-    it("getDeliveryPrice() should equal $25", function() {
-      expect(testService.getDeliveryFee()).toEqual(25);
-    });
-
   });
 
 })();
