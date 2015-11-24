@@ -3,7 +3,7 @@
     .module("app")
     .controller("BagController", BagController);
 
-  function BagController($scope, CalculatorService, BagService, ProductService) {
+  function BagController($scope, CONFIG, CalculatorService, BagService, ProductService) {
 
     $scope.calculateOrder = calculateOrder;
 
@@ -29,7 +29,7 @@
         $scope.count,
         $scope.selectedProduct,
         $scope.delivered,
-        ProductService.getDeliveryFee()
+        CONFIG.DELIVERY_FEE
       );
     }
 
