@@ -3,7 +3,7 @@
     .module("app")
     .controller("AreaController", AreaController);
 
-  function AreaController($scope, CalculatorService, ProductService) {
+  function AreaController($scope, CalculatorService, ProductService, CONFIG) {
 
     $scope.calculateOrder = calculateOrder;
 
@@ -27,7 +27,7 @@
         $scope.depth,
         $scope.selectedProduct,
         $scope.delivered,
-        ProductService.getDeliveryFee()
+        CONFIG.DELIVERY_FEE
       );
     }
 
