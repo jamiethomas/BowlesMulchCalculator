@@ -3,7 +3,7 @@
     .module("app")
     .controller("BagController", BagController);
 
-  function BagController($scope, CalculatorService, BagService, ProductService, CONFIG) {
+  function BagController($scope, CONFIG, CalculatorService, BagService, ProductService) {
 
     $scope.calculateOrder = calculateOrder;
 

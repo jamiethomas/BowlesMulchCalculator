@@ -1,4 +1,4 @@
 (function () {
   angular
-    .module('app', ['ngRoute', 'app.config']);
+    .module('app', ['app.config', 'ngRoute']);
 })();

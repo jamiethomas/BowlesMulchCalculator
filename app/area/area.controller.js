@@ -3,7 +3,7 @@
     .module("app")
     .controller("AreaController", AreaController);
 
-  function AreaController($scope, CalculatorService, ProductService, CONFIG) {
+  function AreaController($scope, CONFIG, CalculatorService, ProductService) {
 
     $scope.calculateOrder = calculateOrder;
 

@@ -3,7 +3,7 @@
     .module("app")
     .controller("OrderController", OrderController);
 
-  function OrderController($scope, CalculatorService, ProductService, CONFIG) {
+  function OrderController($scope, CONFIG, CalculatorService, ProductService) {
 
     $scope.calculateOrder = calculateOrder;
 
