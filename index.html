@@ -52,12 +52,12 @@
     </nav>
 
 
-    <div class="container" ng-controller="MainController">
+    <div class="container" ng-controller="MainController as vmMain">
         <div class="col-md-4">
           <img src="http://www.bowlesmulch.com/wp-content/ata-images/bowles_mulch.jpg" height="200">
         </div>
         <div class="col-md-8">
-          <h1 class="jumbotron">{{title}}<p>{{description}}</h1>
+          <h1 class="jumbotron">{{vmMain.title}}<p>{{vmMain.description}}</h1>
         </div>
 
         <!-- angular templating -->

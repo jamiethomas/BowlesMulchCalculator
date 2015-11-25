@@ -5,28 +5,30 @@
 
   function AreaController($scope, CONFIG, CalculatorService, ProductService) {
 
-    $scope.calculateOrder = calculateOrder;
+    var vm = this;
 
-    $scope.$parent.title = "Area Calculator";
-    $scope.$parent.description = "Use this handy calculator to determine how much product you need for your coverage area.";
+    this.calculateOrder = calculateOrder;
 
-    $scope.length = 0;
-    $scope.width = 0;
-    $scope.depth = 3;
-    $scope.delivered = false;
+    $scope.vmMain.title = "Area Calculator";
+    $scope.vmMain.description = "Use this handy calculator to determine how much product you need for your coverage area.";
 
-    $scope.products = ProductService.getProducts();
-    $scope.selectedProduct = $scope.products[0];
+    this.length = 0;
+    this.width = 0;
+    this.depth = 3;
+    this.delivered = false;
 
-    calculateOrder();
+    this.products = ProductService.getProducts();
+    this.selectedProduct = this.products[0];
+
+    this.calculateOrder();
 
     function calculateOrder() {
-      $scope.order = CalculatorService.CalculateOrderByArea(
-        $scope.length,
-        $scope.width,
-        $scope.depth,
-        $scope.selectedProduct,
-        $scope.delivered,
+      this.order = CalculatorService.CalculateOrderByArea(
+        this.length,
+        this.width,
+        this.depth,
+        this.selectedProduct,
+        this.delivered,
         CONFIG.DELIVERY_FEE
       );
     }
