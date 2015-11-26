@@ -7,7 +7,9 @@
     beforeEach(angular.mock.module('app'));
 
     var $controller;
-
+    var vm;
+    var $scope;
+    
     beforeEach(angular.mock.inject(function(_$controller_){
       $controller = _$controller_;
 
