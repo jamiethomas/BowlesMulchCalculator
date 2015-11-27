@@ -57,7 +57,7 @@
           <img src="http://www.bowlesmulch.com/wp-content/ata-images/bowles_mulch.jpg" height="200">
         </div>
         <div class="col-md-8">
-          <h1 class="jumbotron">{{vmMain.title}}<p>{{vmMain.description}}</h1>
+          <h1 ng-if="vmMain.title != ''" class="jumbotron">{{vmMain.title}}<p ng-if="vmMain.description != ''">{{vmMain.description}}</h1>
         </div>
 
         <!-- angular templating -->
@@ -68,7 +68,6 @@
     <!-- Angular libraries -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-mocks.js"></script>
 
     <!-- Local libraries -->
     <script src="app/app.js"></script>
@@ -81,6 +80,7 @@
     <script src="app/area/area.controller.js"></script>
     <script src="app/bag/bag.controller.js"></script>
     <script src="app/order/order.controller.js"></script>
+    <script src="app/about/about.controller.js"></script>    
     <script src="app/components/order-details.directive.js"></script>
 
   </body>

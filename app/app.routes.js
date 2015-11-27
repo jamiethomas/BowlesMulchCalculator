@@ -5,22 +5,18 @@
     .config(function($routeProvider) {
       $routeProvider
 
-    // route for the home page
-    .when('/x', {
-      templateUrl : 'pages/home.html',
-      controller  : 'mainController'
-    })
-
     // route for the about page
     .when('/about', {
-      templateUrl : 'pages/about.html',
-      controller  : 'aboutController'
+      templateUrl : 'app/about/about.html',
+      controller  : 'aboutController',
+      controllerAs: 'vm'
     })
 
     // route for the contact page
     .when('/contact', {
       templateUrl : 'pages/contact.html',
-      controller  : 'contactController'
+      controller  : 'contactController',
+      controllerAs: 'vm'
     })
 
     // route for bag calculator
