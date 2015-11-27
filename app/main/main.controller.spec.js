@@ -12,12 +12,12 @@
       $controller = _$controller_;
 
       $scope = {};
-      testController = $controller('MainController', { $scope: $scope });
+      vm = $controller('MainController', { $scope: $scope });
     }));
 
     it("Check default values", function() {
-      expect($scope.title).toBe("Calculator");
-      expect($scope.description).toBe("Use this handy calculator to determine how much product you need.");
+      expect(vm.title).toBe("Calculator");
+      expect(vm.description).toBe("Use this handy calculator to determine how much product you need.");
     });
 
 });
