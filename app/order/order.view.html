@@ -1,17 +1,17 @@
 <div class="col-md-8">
   <div class="form-group">
     <label for="product">Product</label>
-    <select id="product" class="form-control" ng-model="selectedProduct" ng-options="product.name + ' / &dollar;' + product.price for product in products" ng-change="calculateOrder()"></select>
+    <select id="product" class="form-control" ng-model="vm.selectedProduct" ng-options="product.name + ' / &dollar;' + product.price for product in vm.products" ng-change="vm.calculateOrder()"></select>
   </div>
   <div class="form-group">
     <label for="buckets">Number of buckets</label>
-    <input id="buckets" class="form-control" type="number" ng-model="buckets" ng-change="calculateOrder()" placeholder="Bag buckets">
+    <input id="buckets" class="form-control" type="number" ng-model="vm.buckets" ng-change="vm.calculateOrder()" placeholder="Bag buckets">
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" ng-model="delivered" ng-change="calculateOrder()"> I'd like this delivered as {{order.deliveries}} deliver{{ order.deliveries == 1 ? "y" : "ies"}} for an additional &dollar;{{ order.deliveryCost }}
+      <input type="checkbox" ng-model="vm.delivered" ng-change="vm.calculateOrder()"> I'd like this delivered as {{vm.order.deliveries}} deliver{{ vm.order.deliveries == 1 ? "y" : "ies"}} for an additional &dollar;{{ vm.order.deliveryCost }}
     </label>
   </div>
 </div>
 
-<div order-details="order"></div>
+<div order-details="vm.order"></div>

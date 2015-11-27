@@ -13,7 +13,7 @@
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" ng-model="vm.delivered" ng-change="vm.calculateOrder()"> I'd like this delivered as {{order.deliveries}} deliver{{ order.deliveries == 1 ? "y" : "ies"}} for an additional &dollar;{{ order.deliveryCost }}
+      <input type="checkbox" ng-model="vm.delivered" ng-change="vm.calculateOrder()"> I'd like this delivered as {{vm.order.deliveries}} deliver{{ vm.order.deliveries == 1 ? "y" : "ies"}} for an additional &dollar;{{ vm.order.deliveryCost }}
     </label>
   </div>
 </div>
