@@ -24,16 +24,15 @@
           </button>
           <a class="navbar-brand" href="#">Bowles Mulch</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse" ng-controller="NavbarController as vmNavbar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#area">By Area</a></li>
-            <li><a href="#bags">From Bags</a></li>
-            <li><a href="#order">By Order </a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/area') || vmNavbar.isActive('') }"><a href="#area">By Area</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/bags') }"><a href="#bags">From Bags</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/order') }"><a href="#order">By Order </a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/about') }"><a href="#about">About</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/contact') }" ><a href="#contact">Contact</a></li>
+          <!-- </ul>
+          <ul class="nav navbar-nav navbar-right"> -->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -63,6 +62,7 @@
     <script src="app/services/calculator.service.js"></script>
     <script src="app/services/bag.service.js"></script>
     <script src="app/services/product.service.js"></script>
+    <script src="app/navbar/navbar.controller.js"></script>
     <script src="app/main/main.controller.js"></script>
     <script src="app/area/area.controller.js"></script>
     <script src="app/bag/bag.controller.js"></script>

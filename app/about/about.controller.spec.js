@@ -19,8 +19,8 @@
     }));
 
     it("Check default values", function() {
-      expect($scope.vmMain.title).toBe("");
-      expect($scope.vmMain.description).toBe("")
+      expect($scope.vmMain.title).toBe("About Us");
+      //expect($scope.vmMain.description).toBe("")
 
     });
 
