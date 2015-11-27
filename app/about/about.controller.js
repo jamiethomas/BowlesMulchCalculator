@@ -7,8 +7,8 @@
 
     var vm = this;
 
-    $scope.vmMain.title = "";
-    $scope.vmMain.description = "";
+    $scope.vmMain.title = "About Us";
+    $scope.vmMain.description = "Bowles Mulch est. 1990.";
 
   }
 })();

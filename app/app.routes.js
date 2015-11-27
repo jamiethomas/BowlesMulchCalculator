@@ -8,14 +8,14 @@
     // route for the about page
     .when('/about', {
       templateUrl : 'app/about/about.html',
-      controller  : 'aboutController',
+      controller  : 'AboutController',
       controllerAs: 'vm'
     })
 
     // route for the contact page
     .when('/contact', {
-      templateUrl : 'pages/contact.html',
-      controller  : 'contactController',
+      templateUrl : 'app/contact/contact.html',
+      controller  : 'ContactController',
       controllerAs: 'vm'
     })
 
