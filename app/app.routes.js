@@ -27,21 +27,21 @@
     .when('/bags', {
       templateUrl: 'app/bag/bag.view.html',
       controller: 'BagController',
-      controllerAs: 'ctrl'
+      controllerAs: 'vm'
     })
 
     // route for order calculator
     .when('/order', {
       templateUrl: 'app/order/order.view.html',
       controller: 'OrderController',
-      controllerAs: 'ctrl'
+      controllerAs: 'vm'
     })
 
     // default route to home page
     .otherwise({
       templateUrl: 'app/area/area.view.html',
       controller: 'AreaController',
-      controllerAs: 'ctrl'
+      controllerAs: 'vm'
     });
   });
 })();

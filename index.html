@@ -45,19 +45,19 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#area">By Area</a></li>
             <li><a href="#bags">From Bags</a></li>
-            <li><a href="#order">By Ordergit </a></li>
+            <li><a href="#order">By Order </a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
 
-    <div class="container" ng-controller="MainController">
+    <div class="container" ng-controller="MainController as vmMain">
         <div class="col-md-4">
           <img src="http://www.bowlesmulch.com/wp-content/ata-images/bowles_mulch.jpg" height="200">
         </div>
         <div class="col-md-8">
-          <h1 class="jumbotron">{{title}}<p>{{description}}</h1>
+          <h1 class="jumbotron">{{vmMain.title}}<p>{{vmMain.description}}</h1>
         </div>
 
         <!-- angular templating -->

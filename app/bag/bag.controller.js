@@ -5,30 +5,31 @@
 
   function BagController($scope, CONFIG, CalculatorService, BagService, ProductService) {
 
-    $scope.calculateOrder = calculateOrder;
+    var vm = this;
 
-    $scope.$parent.title = "Bag Converter";
-    $scope.$parent.description = "Use this handy calculator to determine how much product you need based on the size and number of bags you have used in the past.";
+    vm.calculateOrder = calculateOrder;
 
+    $scope.vmMain.title = "Bag Converter";
+    $scope.vmMain.description = "Use this handy calculator to determine how much product you need based on the size and number of bags you have used in the past.";
 
-    $scope.size = 0;
-    $scope.count = 0;
-    $scope.delivered = false;
+    vm.size = 0;
+    vm.count = 0;
+    vm.delivered = false;
 
-    $scope.bags = BagService.getBags();
-    $scope.selectedBag = $scope.bags[0];
+    vm.bags = BagService.getBags();
+    vm.selectedBag = vm.bags[0];
 
-    $scope.products = ProductService.getProducts();
-    $scope.selectedProduct = $scope.products[0];
+    vm.products = ProductService.getProducts();
+    vm.selectedProduct = vm.products[0];
 
-    calculateOrder();
+    vm.calculateOrder();
 
     function calculateOrder() {
-      $scope.order = CalculatorService.CalculateOrderByBags(
-        $scope.selectedBag.size,
-        $scope.count,
-        $scope.selectedProduct,
-        $scope.delivered,
+      vm.order = CalculatorService.CalculateOrderByBags(
+        vm.selectedBag.size,
+        vm.count,
+        vm.selectedProduct,
+        vm.delivered,
         CONFIG.DELIVERY_FEE
       );
     }

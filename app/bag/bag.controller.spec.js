@@ -7,71 +7,73 @@
     beforeEach(angular.mock.module('app'));
 
     var $controller;
+    var vm;
+    var $scope;
 
     beforeEach(angular.mock.inject(function(_$controller_){
       $controller = _$controller_;
 
       $scope = {};
-      $scope.$parent = {};
-      testController = $controller('BagController', { $scope: $scope });
+      $scope.vmMain = {};
+      vm = $controller('BagController', { $scope: $scope });
     }));
 
     it("Check default values", function() {
-      expect($scope.size).toBe(0);
-      expect($scope.count).toBe(0);
-      expect($scope.delivered).toBe(false);
-      expect($scope.$parent.title).toBe("Bag Converter");
-      expect($scope.$parent.description).toBe("Use this handy calculator to determine how much product you need based on the size and number of bags you have used in the past.")
+      expect(vm.size).toBe(0);
+      expect(vm.count).toBe(0);
+      expect(vm.delivered).toBe(false);
+      expect($scope.vmMain.title).toBe("Bag Converter");
+      expect($scope.vmMain.description).toBe("Use this handy calculator to determine how much product you need based on the size and number of bags you have used in the past.")
 
-      $scope.calculateOrder();
+      vm.calculateOrder();
 
-      expect($scope.order).not.toBe(null);
-      expect($scope.order.yards).toBe(0);
-      expect($scope.order.buckets).toBe(0);
-      expect($scope.order.deliveries).toBe(0);
-      expect($scope.order.totalCost).toBe(0);
-      expect($scope.order.deliveryCost).toBe(0);
+      expect(vm.order).not.toBe(null);
+      expect(vm.order.yards).toBe(0);
+      expect(vm.order.buckets).toBe(0);
+      expect(vm.order.deliveries).toBe(0);
+      expect(vm.order.totalCost).toBe(0);
+      expect(vm.order.deliveryCost).toBe(0);
     });
 
     it("Should handle negative values", function() {
-      $scope.size = -1;
-      $scope.count = -1;
-      $scope.calculateOrder();
+      vm.size = -1;
+      vm.count = -1;
+      vm.calculateOrder();
 
-      expect($scope.order).not.toBe(null);
-      expect($scope.order.yards).toBe(0);
-      expect($scope.order.buckets).toBe(0);
-      expect($scope.order.deliveries).toBe(0);
-      expect($scope.order.totalCost).toBe(0);
-      expect($scope.order.deliveryCost).toBe(0);
+      expect(vm.order).not.toBe(null);
+      expect(vm.order.yards).toBe(0);
+      expect(vm.order.buckets).toBe(0);
+      expect(vm.order.deliveries).toBe(0);
+      expect(vm.order.totalCost).toBe(0);
+      expect(vm.order.deliveryCost).toBe(0);
     });
 
     it("Should handle calculations correctly for pickup", function() {
-      $scope.size = 1.5;
-      $scope.count = 18;
-      $scope.calculateOrder();
+      vm.size = 1.5;
+      vm.count = 18;
+      vm.calculateOrder();
 
-      expect($scope.order).not.toBe(null);
-      expect($scope.order.yards).toBe(1);
-      expect($scope.order.buckets).toBe(2);
-      expect($scope.order.deliveries).toBe(1);
-      expect($scope.order.deliveryCost).toBe(25);
-      expect($scope.order.totalCost).toBe(30);
+      expect(vm.order).not.toBe(null);
+      expect(vm.order.yards).toBe(1);
+      expect(vm.order.buckets).toBe(2);
+      expect(vm.order.deliveries).toBe(1);
+      expect(vm.order.deliveryCost).toBe(25);
+      expect(vm.order.totalCost).toBe(30);
 
     });
 
     it("Should handle calculations correctly for delivery", function() {
-      $scope.size = 1.5;
-      $scope.count = 18;
-      $scope.delivered = true;
-      $scope.calculateOrder();
+      vm.size = 1.5;
+      vm.count = 18;
+      vm.delivered = true;
+      vm.calculateOrder();
 
-      expect($scope.order).not.toBe(null);
-      expect($scope.order.yards).toBe(1);
-      expect($scope.order.buckets).toBe(2);
-      expect($scope.order.deliveries).toBe(1);
-      expect($scope.order.deliveryCost).toBe(25);
-      expect($scope.order.totalCost).toBe(55);
+      expect(vm.order).not.toBe(null);
+      expect(vm.order.yards).toBe(1);
+      expect(vm.order.buckets).toBe(2);
+      expect(vm.order.deliveries).toBe(1);
+      expect(vm.order.deliveryCost).toBe(25);
+      expect(vm.order.totalCost).toBe(55);
 
     });
 });

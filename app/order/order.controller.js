@@ -5,24 +5,26 @@
 
   function OrderController($scope, CONFIG, CalculatorService, ProductService) {
 
-    $scope.calculateOrder = calculateOrder;
+    var vm = this;
 
-    $scope.$parent.title = "Order Calculator";
-    $scope.$parent.description = "Use this handy calculator to determine price of your order.";
+    vm.calculateOrder = calculateOrder;
 
-    $scope.buckets = 0;
-    $scope.delivered = false;
+    $scope.vmMain.title = "Order Calculator";
+    $scope.vmMain.description = "Use this handy calculator to determine price of your order.";
 
-    $scope.products = ProductService.getProducts();
-    $scope.selectedProduct = $scope.products[0];
+    vm.buckets = 0;
+    vm.delivered = false;
 
-    calculateOrder();
+    vm.products = ProductService.getProducts();
+    vm.selectedProduct = vm.products[0];
+
+    vm.calculateOrder();
 
     function calculateOrder() {
-      $scope.order = CalculatorService.CalculateOrderByBuckets(
-        $scope.buckets,
-        $scope.selectedProduct,
-        $scope.delivered,
+      vm.order = CalculatorService.CalculateOrderByBuckets(
+        vm.buckets,
+        vm.selectedProduct,
+        vm.delivered,
         CONFIG.DELIVERY_FEE
       );
     }
