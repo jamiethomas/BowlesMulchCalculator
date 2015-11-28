@@ -53,7 +53,7 @@
         var yards = 0;
 
         if (buckets > 0 && buckets > 0) {
-          yards = Math.round(buckets / 2);
+          yards = buckets / 2;
         }
 
         return yards;

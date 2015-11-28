@@ -313,6 +313,28 @@
         expect(order.selectedProduct).toBe(selectedProduct);
       });
 
+      it("Should not round up values", function() {
+        var buckets = 1;
+        var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
+        var delivered = false;
+
+        var order = testService.CalculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
+
+        // Form values
+        expect(buckets).toBe(1);
+        expect(delivered).toBe(false);
+
+        // Check Order
+        expect(order).not.toBe(null);
+        expect(order.yards).toBe(.5);
+        expect(order.buckets).toBe(1);
+        expect(order.deliveries).toBe(1);
+        expect(order.totalCost).toBe(15);
+        expect(order.deliveryCost).toBe(25);
+        expect(order.delivered).toBe(delivered);
+        expect(order.selectedProduct).toBe(selectedProduct);
+      });
+
     });
 
     describe("BucketAmount Tests", function() {
@@ -424,12 +446,12 @@
         expect(testService.BucketsToYards(-1)).toBe(0);
       });
 
-      it("BucketsToYards should round up", function() {
-        expect(testService.BucketsToYards(3)).toBe(2);
+      it("BucketsToYards should NOT round up", function() {
+        expect(testService.BucketsToYards(3)).toBe(1.5);
         expect(bucketCheck(3)).toEqual(1.5);
 
         for (i = 1; i < 100; i++) {
-          expect(testService.BucketsToYards(i)).toBe(Math.round(i / 2));
+          expect(testService.BucketsToYards(i)).toBe(i / 2);
           expect(bucketCheck(i)).toEqual(i / 2);
         }
       });
