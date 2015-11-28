@@ -10,8 +10,6 @@
     vm.isActive = isActive;
 
     function isActive(viewLocation) {
-      console.log('l:' + viewLocation);
-      console.log('p:' + $location.path());
       return viewLocation === $location.path();
     }
 
