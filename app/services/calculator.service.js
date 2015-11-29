@@ -8,27 +8,76 @@
     function CalculatorService() {
 
       var factory = {
-        CubicYardAmount : CubicYardAmount,
-        BucketAmount : BucketAmount,
-        BagsToYards : BagsToYards,
-        BucketsToYards : BucketsToYards,
-        CalculateOrderByArea : CalculateOrderByArea,
-        CalculateOrderByBags : CalculateOrderByBags,
-        CalculateOrderByBuckets : CalculateOrderByBuckets
+        cubicYardAmount : cubicYardAmount,
+        bucketAmount : bucketAmount,
+        bagsToYards : bagsToYards,
+        bucketsToYards : bucketsToYards,
+        calculateOrderByArea : calculateOrderByArea,
+        calculateOrderByBags : calculateOrderByBags,
+        calculateOrderByBuckets : calculateOrderByBuckets,
+        roundHalf : roundHalf
       };
 
-      function CubicYardAmount(length, width, depth) {
+      function calculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee) {
+
+         var order = {};
+
+         order.yards = cubicYardAmount(length, width, depth);
+         order.buckets = bucketAmount(order.yards);
+         order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
+         order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
+         order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
+         order.delivered = delivered;
+         order.selectedProduct = selectedProduct;
+
+       return order;
+      }
+
+      function calculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee) {
+
+        var order = {};
+
+        order.yards = bagsToYards(size, count);
+        order.buckets = bucketAmount(order.yards);
+        order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
+        order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
+        order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
+        order.delivered = delivered;
+        order.selectedProduct = selectedProduct;
+
+        return order;
+
+      }
+
+      function calculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee) {
+
+        var order = {};
+
+        order.yards = bucketsToYards(buckets);
+        order.buckets = bucketAmount(order.yards);
+        order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
+        order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
+        order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
+        order.delivered = delivered;
+        order.selectedProduct = selectedProduct;
+
+        return order;
+      }
+
+      // Private methods
+
+      function cubicYardAmount(length, width, depth) {
 
         var yards = 0;
 
         if (length > 0 && width > 0 && depth > 0) {
-          yards = Math.round(length * width * (depth / 12) / 27);
+          yards = roundHalf(length * width * (depth / 12) / 27);
         }
 
         return yards;
       }
 
-      function BucketAmount(yards) {
+      function bucketAmount(yards) {
 
         var buckets = 0;
 
@@ -39,70 +88,34 @@
         return buckets;
       }
 
-      function BagsToYards(size, count) {
+      function bagsToYards(size, count) {
         var yards = 0;
 
         if (size > 0 && count > 0) {
-          yards = Math.round(((size * count) / 27));
+          yards = roundHalf(((size * count) / 27));
         }
 
         return yards;
       }
 
-      function BucketsToYards(buckets) {
+      function bucketsToYards(buckets) {
         var yards = 0;
 
         if (buckets > 0 && buckets > 0) {
-          yards = Math.round(buckets / 2);
+          yards = buckets / 2;
         }
 
         return yards;
       }
 
-      function CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee) {
+      function roundHalf(num) {
+        var result = 0;
 
-         var order = {};
+        if (num > 0) {
+          result = Math.round(num * 2) / 2;
+        }
 
-         order.yards = CubicYardAmount(length, width, depth);
-         order.buckets = BucketAmount(order.yards);
-         order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
-         order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
-         order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
-         order.delivered = delivered;
-         order.selectedProduct = selectedProduct;
-
-       return order;
-      }
-
-      function CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee) {
-
-        var order = {};
-
-        order.yards = BagsToYards(size, count);
-        order.buckets = BucketAmount(order.yards);
-        order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
-        order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
-        order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
-        order.delivered = delivered;
-        order.selectedProduct = selectedProduct;
-
-        return order;
-
-      }
-
-      function CalculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee) {
-
-        var order = {};
-
-        order.yards = BucketsToYards(buckets);
-        order.buckets = BucketAmount(order.yards);
-        order.deliveries = Math.ceil(order.buckets / selectedProduct.deliveryLimit);
-        order.deliveryCost = (order.buckets > 0) ? order.deliveries * deliveryFee : 0;
-        order.totalCost = (order.buckets * selectedProduct.price) + ((delivered) ?  order.deliveryCost : 0);
-        order.delivered = delivered;
-        order.selectedProduct = selectedProduct;
-
-        return order;
+        return result;
       }
 
      return factory;

@@ -6,7 +6,7 @@
     <meta name="google" value="notranslate">
     <title>Bowles Mulch Calcuator</title>
 
-    <link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
   </head>
 
@@ -24,39 +24,25 @@
           </button>
           <a class="navbar-brand" href="#">Bowles Mulch</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse" ng-controller="NavbarController as vmNavbar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li> -->
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#area">By Area</a></li>
-            <li><a href="#bags">From Bags</a></li>
-            <li><a href="#order">By Order </a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/area') || vmNavbar.isActive('') }"><a href="#area">By Area</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/bags') }"><a href="#bags">From Bags</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/order') }"><a href="#order">By Bucket</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/about') }"><a href="#about">About</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/contact') }" ><a href="#contact">Contact</a></li>
+          <!-- </ul>
+          <ul class="nav navbar-nav navbar-right"> -->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-
     <div class="container" ng-controller="MainController as vmMain">
         <div class="col-md-4">
           <img src="http://www.bowlesmulch.com/wp-content/ata-images/bowles_mulch.jpg" height="200">
         </div>
-        <div class="col-md-8">
+        <div ng-if="vmMain.title != '' || vmMain.description != ''" class="col-md-8">
           <h1 class="jumbotron">{{vmMain.title}}<p>{{vmMain.description}}</h1>
         </div>
 
@@ -65,10 +51,16 @@
         <div ng-view></div>
     </div>
 
+    <!-- JQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstap -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
     <!-- Angular libraries -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-mocks.js"></script>
 
     <!-- Local libraries -->
     <script src="app/app.js"></script>
@@ -77,10 +69,13 @@
     <script src="app/services/calculator.service.js"></script>
     <script src="app/services/bag.service.js"></script>
     <script src="app/services/product.service.js"></script>
+    <script src="app/navbar/navbar.controller.js"></script>
     <script src="app/main/main.controller.js"></script>
     <script src="app/area/area.controller.js"></script>
     <script src="app/bag/bag.controller.js"></script>
     <script src="app/order/order.controller.js"></script>
+    <script src="app/about/about.controller.js"></script>
+    <script src="app/contact/contact.controller.js"></script>
     <script src="app/components/order-details.directive.js"></script>
 
   </body>
