@@ -23,7 +23,7 @@
     vm.calculateOrder();
 
     function calculateOrder() {
-      vm.order = CalculatorService.CalculateOrderByArea(
+      vm.order = CalculatorService.calculateOrderByArea(
         vm.length,
         vm.width,
         vm.depth,

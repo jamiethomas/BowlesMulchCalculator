@@ -21,7 +21,7 @@
     vm.calculateOrder();
 
     function calculateOrder() {
-      vm.order = CalculatorService.CalculateOrderByBuckets(
+      vm.order = CalculatorService.calculateOrderByBuckets(
         vm.buckets,
         vm.selectedProduct,
         vm.delivered,

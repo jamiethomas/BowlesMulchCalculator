@@ -25,7 +25,7 @@
     vm.calculateOrder();
 
     function calculateOrder() {
-      vm.order = CalculatorService.CalculateOrderByBags(
+      vm.order = CalculatorService.calculateOrderByBags(
         vm.selectedBag.size,
         vm.count,
         vm.selectedProduct,

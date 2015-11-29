@@ -13,12 +13,12 @@
       deliveryFee = 25;
     }));
 
-    // CalculateOrderByArea Tests
+    // calculateOrderByArea Tests
 
-    describe("CalculateOrderByArea Tests", function() {
+    describe("calculateOrderByArea Tests", function() {
 
-      it("CalculateOrderByArea should not be null", function() {
-        expect(testService.CalculateOrderByArea).toBeDefined();
+      it("calculateOrderByArea should not be null", function() {
+        expect(testService.calculateOrderByArea).toBeDefined();
       });
 
       it("Check default values", function() {
@@ -29,7 +29,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(length).toBe(0);
@@ -56,7 +56,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
 
         // Caluclated values
         expect(order.yards).toBe(0);
@@ -75,7 +75,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
 
         // Calculated values
         expect(order.yards).toBe(1);
@@ -95,7 +95,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = true;
 
-        var order = testService.CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee);
 
         // Calculated values
         expect(order.yards).toBe(1);
@@ -109,12 +109,12 @@
       });
     });
 
-    // CalculateOrderByBags Tests
+    // calculateOrderByBags Tests
 
-    describe("CalculateOrderByBags Tests", function() {
+    describe("calculateOrderByBags Tests", function() {
 
-      it("CalculateOrderByBags should not be null", function() {
-        expect(testService.CalculateOrderByBags).toBeDefined();
+      it("calculateOrderByBags should not be null", function() {
+        expect(testService.calculateOrderByBags).toBeDefined();
       });
 
       it("Check default values", function() {
@@ -123,7 +123,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(size).toBe(0);
@@ -148,7 +148,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(size).toBe(-1);
@@ -172,7 +172,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(size).toBe(1.5);
@@ -196,7 +196,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = true;
 
-        var order = testService.CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(size).toBe(1.5);
@@ -216,12 +216,12 @@
 
     });
 
-    // CalculateOrderByBuckets Tests
+    // calculateOrderByBuckets Tests
 
-    describe("CalculateOrderByBuckets Tests", function() {
+    describe("calculateOrderByBuckets Tests", function() {
 
-      it("CalculateOrderByBuckets should not be null", function() {
-        expect(testService.CalculateOrderByBuckets).toBeDefined();
+      it("calculateOrderByBuckets should not be null", function() {
+        expect(testService.calculateOrderByBuckets).toBeDefined();
       });
 
       it("Check default values", function() {
@@ -229,7 +229,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(buckets).toBe(0);
@@ -252,7 +252,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(buckets).toBe(-1);
@@ -274,7 +274,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(buckets).toBe(10);
@@ -296,7 +296,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = true;
 
-        var order = testService.CalculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(buckets).toBe(10);
@@ -318,7 +318,7 @@
         var selectedProduct = { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 };
         var delivered = false;
 
-        var order = testService.CalculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
+        var order = testService.calculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee);
 
         // Form values
         expect(buckets).toBe(1);

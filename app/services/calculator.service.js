@@ -12,13 +12,13 @@
         bucketAmount : bucketAmount,
         bagsToYards : bagsToYards,
         bucketsToYards : bucketsToYards,
-        CalculateOrderByArea : CalculateOrderByArea,
-        CalculateOrderByBags : CalculateOrderByBags,
-        CalculateOrderByBuckets : CalculateOrderByBuckets,
+        calculateOrderByArea : calculateOrderByArea,
+        calculateOrderByBags : calculateOrderByBags,
+        calculateOrderByBuckets : calculateOrderByBuckets,
         roundHalf : roundHalf
       };
 
-      function CalculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee) {
+      function calculateOrderByArea(length, width, depth, selectedProduct, delivered, deliveryFee) {
 
          var order = {};
 
@@ -33,7 +33,7 @@
        return order;
       }
 
-      function CalculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee) {
+      function calculateOrderByBags(size, count, selectedProduct, delivered, deliveryFee) {
 
         var order = {};
 
@@ -49,7 +49,7 @@
 
       }
 
-      function CalculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee) {
+      function calculateOrderByBuckets(buckets, selectedProduct, delivered, deliveryFee) {
 
         var order = {};
 
