@@ -6,7 +6,7 @@
     <meta name="google" value="notranslate">
     <title>Bowles Mulch Calcuator</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
   </head>
 
@@ -26,11 +26,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" ng-controller="NavbarController as vmNavbar">
           <ul class="nav navbar-nav">
-            <li ng-class="{ active: vmNavbar.isActive('/area') || vmNavbar.isActive('') }"><a href="#area">By Area</a></li>
-            <li ng-class="{ active: vmNavbar.isActive('/bags') }"><a href="#bags">From Bags</a></li>
-            <li ng-class="{ active: vmNavbar.isActive('/order') }"><a href="#order">By Bucket</a></li>
-            <li ng-class="{ active: vmNavbar.isActive('/about') }"><a href="#about">About</a></li>
-            <li ng-class="{ active: vmNavbar.isActive('/contact') }" ><a href="#contact">Contact</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/area') || vmNavbar.isActive('') }"><a href="#area" title="Calculate order by length and width">Area</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/sqft') }"><a href="#sqft" title="Calculate order by square feet">Square Feet</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/bags') }"><a href="#bags" title="Convert bags to bulk mulch">Bags</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/order') }"><a href="#order" title="Calculate order by buckets">Bucket</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/about') }"><a href="#about" title="About Bowles Mulch">About</a></li>
+            <li ng-class="{ active: vmNavbar.isActive('/contact') }" ><a href="#contact" title="Contact Bowles Mulch">Contact</a></li>
           <!-- </ul>
           <ul class="nav navbar-nav navbar-right"> -->
           </ul>
@@ -56,11 +57,11 @@
 
     <!-- Bootstap -->
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <!-- Angular libraries -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
 
     <!-- Local libraries -->
     <script src="app/app.js"></script>
@@ -75,6 +76,7 @@
     <script src="app/area/area.controller.js"></script>
     <script src="app/bag/bag.controller.js"></script>
     <script src="app/order/order.controller.js"></script>
+    <script src="app/sqft/sqft.controller.js"></script>
     <script src="app/about/about.controller.js"></script>
     <script src="app/contact/contact.controller.js"></script>
     <script src="app/components/order-details.directive.js"></script>

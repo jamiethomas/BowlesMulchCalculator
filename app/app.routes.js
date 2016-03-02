@@ -19,6 +19,13 @@
       controllerAs: 'vm'
     })
 
+    // route for square feet calculator
+    .when('/sqft', {
+      templateUrl: 'app/sqft/sqft.view.html',
+      controller: 'SqftController',
+      controllerAs: 'vm'
+    })
+
     // route for bag calculator
     .when('/bags', {
       templateUrl: 'app/bag/bag.view.html',
