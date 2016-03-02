@@ -57,7 +57,7 @@
       expect(vm.order.yards).toBe(1);
       expect(vm.order.buckets).toBe(2);
       expect(vm.order.deliveries).toBe(1);
-      expect(vm.order.deliveryCost).toBe(25);
+      expect(vm.order.deliveryCost).toBe(30);
       expect(vm.order.totalCost).toBe(30);
 
     });
@@ -72,8 +72,8 @@
       expect(vm.order.yards).toBe(1);
       expect(vm.order.buckets).toBe(2);
       expect(vm.order.deliveries).toBe(1);
-      expect(vm.order.deliveryCost).toBe(25);
-      expect(vm.order.totalCost).toBe(55);
+      expect(vm.order.deliveryCost).toBe(30);
+      expect(vm.order.totalCost).toBe(60);
 
     });
 });
