@@ -9,7 +9,7 @@
     var $controller;
     var vm;
     var $scope;
-    
+
     beforeEach(angular.mock.inject(function(_$controller_){
       $controller = _$controller_;
 
@@ -62,7 +62,7 @@
       expect(vm.order.yards).toBe(1);
       expect(vm.order.buckets).toBe(2);
       expect(vm.order.deliveries).toBe(1);
-      expect(vm.order.deliveryCost).toBe(25); // Delivery fee is calculated but not applied
+      expect(vm.order.deliveryCost).toBe(30); // Delivery fee is calculated but not applied
       expect(vm.order.totalCost).toBe(30);
 
     });
@@ -78,8 +78,8 @@
       expect(vm.order.yards).toBe(1);
       expect(vm.order.buckets).toBe(2);
       expect(vm.order.deliveries).toBe(1);
-      expect(vm.order.deliveryCost).toBe(25);
-      expect(vm.order.totalCost).toBe(55);
+      expect(vm.order.deliveryCost).toBe(30);
+      expect(vm.order.totalCost).toBe(60);
 
     });
 });
