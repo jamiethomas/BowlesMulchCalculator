@@ -17,8 +17,7 @@
           { name: "Natural Shredded Hardwood", price: 15, deliveryLimit: 20 },
           { name: "Brown Shredded Hardwood", price: 15, deliveryLimit: 20 },
           { name: "Black Shredded Hardwood", price: 15, deliveryLimit: 20 },
-          { name: "Compro", price: 20, deliveryLimit: 10 },
-          { name: "Top Soil", price: 20, deliveryLimit: 10 }
+          { name: "Compro", price: 20, deliveryLimit: 10 }
         ];
 
         //{ name: "Manure", price: 15, deliveryLimit: 10 },
