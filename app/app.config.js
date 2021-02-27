@@ -2,6 +2,6 @@
   angular
     .module('app.config', [])
     .constant('CONFIG', {
-      'DELIVERY_FEE' : 30
+      'DELIVERY_FEE' : 40
     });
 })();
