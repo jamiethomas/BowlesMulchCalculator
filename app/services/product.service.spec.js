@@ -12,8 +12,8 @@
       testService = ProductService;
     }));
 
-    it('There should be 6 products', function(){ //parameter name = service name
-      expect( testService.getProducts().length ).toEqual(6);
+    it('There should be 3 products', function(){ //parameter name = service name
+      expect( testService.getProducts().length ).toEqual(3);
      });
 
     it("getDefaultProduct() should equal the first product in the list", function() {
